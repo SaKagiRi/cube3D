@@ -36,7 +36,7 @@ MAIN_FILE		= cube.c
 
 #------------[PROCESS]
 all: lib $(NAME)
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) ./include/cube.h
 		@$(CC) $(CFLAGS) $(OBJ) $(LIB) $(HEADER) -o $@
 		@printf "\033[38;5;46m\033[1m⟪ Complete ⟫\033[0m\n"
 %.o: %.c Makefile
