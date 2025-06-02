@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube.c                                             :+:      :+:    :+:   */
+/*   walloc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/19 11:31:01 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/03 00:09:40 by kawaii           ###   ########.fr       */
+/*   Created: 2025/06/02 23:51:57 by kawaii            #+#    #+#             */
+/*   Updated: 2025/06/02 23:54:13 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-int	main(void)
+t_err	walloc(void *arg, size_t size)
 {
 	t_game	*game;
 
 	game = get_game();
-	game->mlx = mlx_init(1920, 1080, "Cube3D", true);
-	if (!game->mlx)
-		return (1);
-	mlx_loop_hook(game->mlx, keyhook, game->mlx);
-	mlx_loop(game->mlx);
-	mlx_terminate(game->mlx);
+	arg = malloc(size);
+	if (!arg)
+		game->err = MEM;
 	return (game->err);
 }

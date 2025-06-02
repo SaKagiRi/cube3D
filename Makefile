@@ -16,14 +16,18 @@ MLX_HEADER	= $(MLX_DIR)/include/MLX42
 SRC			= $(addprefix srcs/, $(FILE))
 OBJ			= $(SRC:.c=.o)
 #------------[ROOT_FILES]
-FILE		= $(MAIN) # TODO: add your module name
+FILE		= $(MAIN) $(UTIL)# TODO: add your module name
 HEADER		= -I ./include -I $(LIBFT_HEADER) -I $(MLX_HEADER)
 LIB			= $(LIBFT_FILE) $(MLX_FILE)
 #------------[SUBFILES]
 #------------[MAIN]
-MAIN			= $(addprefix $(MAIN_PATH)/, $(MAIN_FILE))
+MAIN			= $(addprefix $(MAIN_PATH)/, $(addsuffix .c, $(MAIN_FILE)))
 MAIN_PATH		= main
-MAIN_FILE		= cube.c hook.c
+MAIN_FILE		= cube hook
+#------------[UTIL]
+UTIL			= $(addprefix $(UTIL_PATH)/, $(addsuffix .c, $(UTIL_FILE)))
+UTIL_PATH		= util
+UTIL_FILE		= get_game in walloc
 #TODO:
 #------------[MODULE]
 # MODULE_NAME	= $(addprefix $(MODULE_PATH)/, $(MODULE_FILE))
