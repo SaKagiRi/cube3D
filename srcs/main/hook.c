@@ -6,13 +6,13 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 13:39:00 by kawaii            #+#    #+#             */
-/*   Updated: 2025/06/02 14:09:37 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/02 14:16:45 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-void	*keyhook(void *arg)
+void	keyhook(void *arg)
 {
 	
 }
