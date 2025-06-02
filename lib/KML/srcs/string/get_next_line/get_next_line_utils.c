@@ -3,89 +3,91 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
+/*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/22 20:56:41 by knakto            #+#    #+#             */
-/*   Updated: 2025/04/04 19:17:05 by knakto           ###   ########.fr       */
+/*   Created: 2024/09/04 13:29:44 by pibasri           #+#    #+#             */
+/*   Updated: 2024/11/20 12:48:45 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-t_line	*ft_gnl_lstnew(char *content)
+void	read_buffer(t_state *r)
 {
-	t_line	*new_node;
-
-	new_node = malloc(sizeof(*new_node));
-	if (!new_node)
-		return (NULL);
-	new_node->content = content;
-	new_node->length = 0;
-	new_node->next = NULL;
-	return (new_node);
-}
-
-t_line	*ft_gnl_lstlast(t_line *lst)
-{
-	if (!lst)
-		return (NULL);
-	while (lst->next != NULL)
+	if (!r->cur_queue)
 	{
-		lst = lst->next;
+		r->cur_queue = malloc(sizeof(t_queue));
+		if (!r->cur_queue)
+			return ;
+		r->cur_queue->next_queue = NULL;
+		r->cur_queue->len = 0;
+		r->pre_queue = r->cur_queue;
 	}
-	return (lst);
-}
-
-void	ft_gnl_lstadd_back(t_line **lst, t_line *new)
-{
-	t_line	*temp;
-
-	if (!new)
-		return ;
-	if (!*lst)
+	else if (!r->eof)
 	{
-		*lst = new;
-		return ;
+		r->pre_queue->next_queue = malloc(sizeof(t_queue));
+		if (!r->pre_queue->next_queue)
+			return ;
+		r->pre_queue = r->pre_queue->next_queue;
+		r->pre_queue->next_queue = NULL;
+		r->pre_queue->len = 0;
 	}
-	temp = ft_gnl_lstlast(*lst);
-	temp->next = new;
+	else
+		return ;
+	r->pre_queue->len = read(r->fildes, r->pre_queue->content, BUFFER_SIZE);
+	if (r->pre_queue->len == 0)
+		r->eof = 1;
 }
 
-void	ft_gnl_lstclear(t_line **lst, void (*del)(void *))
+void	read_until_newline(t_state *prop)
 {
-	t_line	*temp_lst;
+	size_t	i;
+	t_queue	*queue;
 
-	if (!lst || !del)
+	if (!prop->cur_queue)
+		read_buffer(prop);
+	queue = prop->cur_queue;
+	if (!queue || !prop->pre_queue || prop->pre_queue->len == (size_t) -1)
 		return ;
-	while (*lst != NULL)
+	while (queue->len)
 	{
-		temp_lst = *lst;
-		*lst = (*lst)->next;
-		free(temp_lst->content);
-		free(temp_lst);
+		i = (prop->len_to_newline + prop->offset) % BUFFER_SIZE;
+		if (i > (queue->len - 1))
+			return ;
+		if (queue->content[i] == '\n')
+		{
+			prop->len_to_newline++;
+			return ;
+		}
+		prop->len_to_newline++;
+		if (i == BUFFER_SIZE - 1)
+		{
+			read_buffer(prop);
+			queue = queue->next_queue;
+		}
 	}
-	*lst = NULL;
 }
 
-void	*ft_gnl_calloc(size_t nmemb, size_t size)
+void	return_line_to_buf(t_state *prop, char *res)
 {
-	void			*arr;
-	size_t			alloc_size;
-	size_t			i;
-	unsigned char	*cast_s;
+	size_t	i;
+	t_queue	*temp;
 
-	alloc_size = nmemb * size;
-	if (!alloc_size || alloc_size / nmemb != size)
-		return (NULL);
-	arr = malloc(alloc_size);
-	if (arr == NULL)
-		return (NULL);
 	i = 0;
-	cast_s = arr;
-	while (i < alloc_size)
+	while (i < prop->len_to_newline || prop->cur_queue)
 	{
-		cast_s[i] = '\0';
+		if (i < prop->len_to_newline)
+			res[i] = prop->cur_queue->content[prop->offset];
+		prop->offset++;
 		i++;
+		if (prop->offset == prop->cur_queue->len || !prop->cur_queue->len)
+		{
+			prop->offset = 0;
+			temp = prop->cur_queue;
+			prop->cur_queue = prop->cur_queue->next_queue;
+			free(temp);
+		}
+		if (i == prop->len_to_newline && prop->offset)
+			return ;
 	}
-	return (cast_s);
 }

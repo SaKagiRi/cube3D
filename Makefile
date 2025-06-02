@@ -54,4 +54,6 @@ fclean: clean
 	@rm -rf $(NAME)
 	@make fclean -C $(LIBFT_DIR)
 re: fclean all
+nix:
+	@nix develop --command zsh
 .PHONY: all clean fclean re lib

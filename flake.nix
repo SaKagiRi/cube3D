@@ -41,8 +41,8 @@
         export LD_LIBRARY_PATH="${pkgs.lib.makeLibraryPath [pkgs.libGL]}":$LD_LIBRARY_PATH
         export LD_LIBRARY_PATH=/run/opengl-driver/lib/:$LD_LIBRARY_PATH
         # source $src/.nixshell_rc
+        make re
       '';
     };
   });
 } 
-

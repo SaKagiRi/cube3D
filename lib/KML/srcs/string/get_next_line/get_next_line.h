@@ -3,41 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
+/*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/04 21:08:54 by knakto            #+#    #+#             */
-/*   Updated: 2025/04/04 21:08:56 by knakto           ###   ########.fr       */
+/*   Created: 2024/09/03 19:55:39 by pibasri           #+#    #+#             */
+/*   Updated: 2024/11/17 10:51:49 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <unistd.h>
-# include <fcntl.h>
-# include <stdlib.h>
-
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000
+#  define BUFFER_SIZE 1024
 # endif
 
-typedef struct s_line
+# ifndef LIMIT
+#  define LIMIT 1024
+# endif
+
+# include <stdlib.h>
+# include <fcntl.h>
+# include <unistd.h>
+
+typedef struct s_queue
 {
-	char			*content;
-	int				length;
-	struct s_line	*next;
-}					t_line;
+	char			content[BUFFER_SIZE];
+	size_t			len;
+	struct s_queue	*next_queue;
+}	t_queue;
+
+typedef struct s_state
+{
+	int		fildes;
+	int		eof;
+	int		fin;
+	t_queue	*cur_queue;
+	t_queue	*pre_queue;
+	size_t	offset;
+	size_t	len_to_newline;
+}	t_state;
 
 char	*get_next_line(int fd);
 
-t_line	*ft_gnl_lstnew(char *content);
-
-t_line	*ft_gnl_lstlast(t_line *lst);
-
-void	ft_gnl_lstadd_back(t_line **lst, t_line *lst_new);
-
-void	ft_gnl_lstclear(t_line **lst, void (*del)(void *));
-
-void	*ft_gnl_calloc(size_t nmemb, size_t size);
+void	read_buffer(t_state *r);
+void	read_until_newline(t_state *prop);
+void	return_line_to_buf(t_state *prop, char *res);
 
 #endif
