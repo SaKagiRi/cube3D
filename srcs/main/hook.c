@@ -6,12 +6,11 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 13:39:00 by kawaii            #+#    #+#             */
-/*   Updated: 2025/06/02 15:00:18 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/02 23:42:43 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-#include <stdio.h>
 
 /**
  * @name Keyhook & Event
@@ -34,8 +33,7 @@ void	keyhook(void *arg)
 
 	mlx = arg;
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
-		printf("Esc\n");
-		// mlx_terminate(mlx);
+		mlx_close_window(mlx);
 }
 
 // static void	reset_prop(t_prop *prop)
