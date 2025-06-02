@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 23:51:57 by kawaii            #+#    #+#             */
-/*   Updated: 2025/06/02 23:54:13 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/03 04:00:06 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ t_err	walloc(void *arg, size_t size)
 	game = get_game();
 	arg = malloc(size);
 	if (!arg)
-		game->err = MEM;
+		game->err = MEM_ERR;
 	return (game->err);
 }

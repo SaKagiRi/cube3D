@@ -4,7 +4,7 @@ CC			= cc
 #------------[FLAGS]
 CFLAGS		= $(DEBUG_FLAGS) $(W_FLAGS)
 DEBUG_FLAGS	= -g3
-W_FLAGS		= #-Wall -Wextra -Werror
+W_FLAGS		= -Wall -Wextra -Werror # -Ofast
 #------------[LIBRARY]
 LIBFT_DIR	= ./lib/KML
 LIBFT_FILE	= $(LIBFT_DIR)/kml.a
@@ -23,7 +23,7 @@ LIB			= $(LIBFT_FILE) $(MLX_FILE)
 #------------[MAIN]
 MAIN			= $(addprefix $(MAIN_PATH)/, $(addsuffix .c, $(MAIN_FILE)))
 MAIN_PATH		= main
-MAIN_FILE		= cube hook
+MAIN_FILE		= cube hook parser_queue
 #------------[UTIL]
 UTIL			= $(addprefix $(UTIL_PATH)/, $(addsuffix .c, $(UTIL_FILE)))
 UTIL_PATH		= util

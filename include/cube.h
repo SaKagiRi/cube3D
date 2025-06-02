@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:29 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/02 23:55:47 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/03 03:28:35 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,20 @@
 typedef enum e_err
 {
 	OK,
-	ARG,
-	FILE,
-	MAP,
-	MEM
+	ARG_ERR,
+	FILE_ERR,
+	MAP_ERR,
+	MEM_ERR
 }	t_err;
+
+/**
+ * @brief List storing content raw string read from map
+ */
+typedef struct s_mapvec
+{
+	t_list	*raw_map;
+	t_list	*cur_row;
+}	t_mapvec;
 
 /**
  * @brief color is compose of 4 byte of color each has 8 bit.
@@ -95,8 +104,10 @@ typedef union u_color
  */
 typedef struct s_map
 {
-	unsigned int	width;
-	unsigned int	length;
+	int				map_fd;
+	unsigned int	col;
+	unsigned int	row;
+	t_mapvec		vecmap;
 	char			**map;
 	mlx_texture_t	n_txt;
 	mlx_texture_t	e_txt;
@@ -124,6 +135,11 @@ typedef struct s_game
 
 int		in(char c, char	*set);
 t_err	walloc(void *arg, size_t size);
+
+void	clear_queue(t_list *raw_map, void (*f)(void *));
+void	lst_iter(t_list *raw_map, void (*f)(void *));
+void	clear_list(t_list *row);
+void	get_queue(t_map *map, int fd);
 
 t_game	*get_game(void);
 
