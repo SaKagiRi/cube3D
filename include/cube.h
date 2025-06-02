@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:29 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/02 14:39:46 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/02 14:43:24 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@
  * 
  * }
  * 
- * unsigned char `rgba[4]` - array of each byte of color
+ * - unsigned char `rgba[4]` - array of each byte of color
  * 
- * unsigned int `rgb_hex` - value of combine every bit into ul.
+ * - unsigned int `rgb_hex` - value of combine every bit into ul.
  * 
  */
  typedef union u_color

@@ -6,15 +6,36 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 13:39:00 by kawaii            #+#    #+#             */
-/*   Updated: 2025/06/02 14:16:45 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/02 15:00:18 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+#include <stdio.h>
 
+/**
+ * @name Keyhook & Event
+ * 
+ * utility function for hook of key and events of the game.
+ * @{
+ * 
+ */
+
+/**
+ * @brief Keyhook funtion
+ *
+ *
+ * @retval 
+ *
+ */
 void	keyhook(void *arg)
 {
-	
+	mlx_t	*mlx;
+
+	mlx = arg;
+	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
+		printf("Esc\n");
+		// mlx_terminate(mlx);
 }
 
 // static void	reset_prop(t_prop *prop)
@@ -102,3 +123,7 @@ void	keyhook(void *arg)
 // 		reset_prop(prop);
 // 	reframe(fdf, prop, prop->map);
 // }
+
+/**
+ * @}
+ */

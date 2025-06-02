@@ -23,7 +23,7 @@ LIB			= $(LIBFT_FILE) $(MLX_FILE)
 #------------[MAIN]
 MAIN			= $(addprefix $(MAIN_PATH)/, $(MAIN_FILE))
 MAIN_PATH		= main
-MAIN_FILE		= cube.c
+MAIN_FILE		= cube.c hook.c
 #TODO:
 #------------[MODULE]
 # MODULE_NAME	= $(addprefix $(MODULE_PATH)/, $(MODULE_FILE))
