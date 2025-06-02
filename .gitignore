@@ -2,3 +2,4 @@ cube3D
 .git
 *.o
 .cache
+.vscode
