@@ -6,14 +6,14 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:29 by knakto            #+#    #+#             */
-/*   Updated: 2025/05/19 13:22:38 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/02 13:38:28 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE_H
 # define CUBE_H
 
-# include "../lib/KML/include/kml.h"
-# include "../lib/MLX42/include/MLX42/MLX42.h"
+# include "kml.h"
+# include "MLX42.h"
 
 #endif

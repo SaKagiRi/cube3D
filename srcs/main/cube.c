@@ -6,12 +6,11 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:01 by knakto            #+#    #+#             */
-/*   Updated: 2025/05/19 11:36:56 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/02 13:38:16 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cube.h"
-#include <threads.h>
+#include "cube.h"
 
 int	main(void)
 {

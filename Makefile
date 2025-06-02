@@ -11,7 +11,7 @@ LIBFT_FILE	= $(LIBFT_DIR)/kml.a
 LIBFT_HEADER= $(LIBFT_DIR)/include
 MLX_DIR		= ./lib/MLX42
 MLX_FILE	= $(MLX_DIR)/build/libmlx42.a -ldl -lglfw -pthread -lm
-MLX_HEADER	= $(MLX_DIR)/include
+MLX_HEADER	= $(MLX_DIR)/include/MLX42
 #------------[OBJECT_AND_SOURCE]
 SRC			= $(addprefix srcs/, $(FILE))
 OBJ			= $(SRC:.c=.o)
