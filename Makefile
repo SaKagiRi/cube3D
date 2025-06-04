@@ -4,7 +4,7 @@ CC			= cc
 #------------[FLAGS]
 CFLAGS		= $(DEBUG_FLAGS) $(W_FLAGS)
 DEBUG_FLAGS	= -g3
-W_FLAGS		= -Wall -Wextra -Werror # -Ofast
+W_FLAGS		= #-Wall -Wextra -Werror # -Ofast
 #------------[LIBRARY]
 LIBFT_DIR	= ./lib/KML
 LIBFT_FILE	= $(LIBFT_DIR)/kml.a
@@ -16,7 +16,7 @@ MLX_HEADER	= $(MLX_DIR)/include/MLX42
 SRC			= $(addprefix srcs/, $(FILE))
 OBJ			= $(SRC:.c=.o)
 #------------[ROOT_FILES]
-FILE		= $(MAIN) $(UTIL)# TODO: add your module name
+FILE		= $(UTIL) $(MINIMAP)
 HEADER		= -I ./include -I $(LIBFT_HEADER) -I $(MLX_HEADER)
 LIB			= $(LIBFT_FILE) $(MLX_FILE)
 #------------[SUBFILES]
@@ -28,16 +28,10 @@ MAIN_FILE		= cube hook parser_queue
 UTIL			= $(addprefix $(UTIL_PATH)/, $(addsuffix .c, $(UTIL_FILE)))
 UTIL_PATH		= util
 UTIL_FILE		= get_game in walloc
-#TODO:
-#------------[MODULE]
-# MODULE_NAME	= $(addprefix $(MODULE_PATH)/, $(MODULE_FILE))
-# MODULE_PATH	= module
-# MODULE_FILE	= files.c
-#	------------[SUB_MODULE]
-#	SUB_MODULE_NAME		= $(addprefix $(SUB_MODULE_PATH)/, $(SUB_MODULE_FILE))
-#	SUB_MODULE_PATH		= sub_module
-#	SUB_MODULE_FILE		= files.c
-
+#------------[MINIMAP]
+MINIMAP				= $(addprefix $(MINIMAP_PATH)/, $(addsuffix .c, $(MINIMAP_FILE)))
+MINIMAP_PATH		= minimap
+MINIMAP_FILE		= main get_t temp_addmap texture
 #------------[PROCESS]
 all: lib $(NAME)
 $(NAME): $(OBJ) ./include/cube.h

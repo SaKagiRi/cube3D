@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:29 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/03 03:28:35 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/04 15:08:24 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,19 @@
 
 # include "kml.h"
 # include "MLX42.h"
+# include "minimap.h"
 
 # ifndef LIMIT_MAP_SIZE
 #  define LIMIT_MAP_SIZE 100
 # endif
 
+# ifndef WIDTH
+#  define WIDTH 1920
+# endif
+
+# ifndef HEIGHT
+#  define HEIGHT 1080
+# endif
 /**
  * 
  * @brief List of error numeration for debugging error
@@ -108,7 +116,7 @@ typedef struct s_map
 	unsigned int	col;
 	unsigned int	row;
 	t_mapvec		vecmap;
-	char			**map;
+	t_map_pos		***map;
 	mlx_texture_t	n_txt;
 	mlx_texture_t	e_txt;
 	mlx_texture_t	s_txt;
@@ -122,7 +130,9 @@ typedef struct s_map
  */
 typedef struct s_player
 {
-	int	pos;
+	int		pos;
+	float	x;
+	float	y;
 }	t_player;
 
 typedef struct s_game
