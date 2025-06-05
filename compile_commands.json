@@ -1120,12 +1120,12 @@
       "-x",
       "c",
       "-o",
-      "/tmp/nix-shell.d11Yiz/CMakeCCompilerId-509696.o",
+      "/tmp/nix-shell.wzjyK4/CMakeCCompilerId-e1e4fa.o",
       "CMakeCCompilerId.c"
     ],
     "directory": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build/CMakeFiles/3.30.5/CompilerIdC",
     "file": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build/CMakeFiles/3.30.5/CompilerIdC/CMakeCCompilerId.c",
-    "output": "/tmp/nix-shell.d11Yiz/CMakeCCompilerId-509696.o"
+    "output": "/tmp/nix-shell.wzjyK4/CMakeCCompilerId-e1e4fa.o"
   },
   {
     "arguments": [
@@ -1265,12 +1265,12 @@
       "-x",
       "c++",
       "-o",
-      "/tmp/nix-shell.d11Yiz/CMakeCXXCompilerId-82c18a.o",
+      "/tmp/nix-shell.wzjyK4/CMakeCXXCompilerId-beed1e.o",
       "CMakeCXXCompilerId.cpp"
     ],
     "directory": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build/CMakeFiles/3.30.5/CompilerIdCXX",
     "file": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build/CMakeFiles/3.30.5/CompilerIdCXX/CMakeCXXCompilerId.cpp",
-    "output": "/tmp/nix-shell.d11Yiz/CMakeCXXCompilerId-82c18a.o"
+    "output": "/tmp/nix-shell.wzjyK4/CMakeCXXCompilerId-beed1e.o"
   },
   {
     "arguments": [
@@ -1278,12 +1278,12 @@
       "-v",
       "-c",
       "-o",
-      "CMakeFiles/cmTC_dce04.dir/CMakeCCompilerABI.c.o",
+      "CMakeFiles/cmTC_c2c0a.dir/CMakeCCompilerABI.c.o",
       "/nix/store/81qcwgdxpwwfs1p0jsqj6kkkyh2v3y0w-cmake-3.30.5/share/cmake-3.30/Modules/CMakeCCompilerABI.c"
     ],
-    "directory": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build/CMakeFiles/CMakeScratch/TryCompile-GXLyQ0",
+    "directory": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build/CMakeFiles/CMakeScratch/TryCompile-Ms4x3f",
     "file": "/nix/store/81qcwgdxpwwfs1p0jsqj6kkkyh2v3y0w-cmake-3.30.5/share/cmake-3.30/Modules/CMakeCCompilerABI.c",
-    "output": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build/CMakeFiles/CMakeScratch/TryCompile-GXLyQ0/CMakeFiles/cmTC_dce04.dir/CMakeCCompilerABI.c.o"
+    "output": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build/CMakeFiles/CMakeScratch/TryCompile-Ms4x3f/CMakeFiles/cmTC_c2c0a.dir/CMakeCCompilerABI.c.o"
   },
   {
     "arguments": [
@@ -1291,42 +1291,12 @@
       "-v",
       "-c",
       "-o",
-      "CMakeFiles/cmTC_c9453.dir/CMakeCXXCompilerABI.cpp.o",
+      "CMakeFiles/cmTC_36858.dir/CMakeCXXCompilerABI.cpp.o",
       "/nix/store/81qcwgdxpwwfs1p0jsqj6kkkyh2v3y0w-cmake-3.30.5/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp"
     ],
-    "directory": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build/CMakeFiles/CMakeScratch/TryCompile-U8ltvB",
+    "directory": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build/CMakeFiles/CMakeScratch/TryCompile-gLYfcV",
     "file": "/nix/store/81qcwgdxpwwfs1p0jsqj6kkkyh2v3y0w-cmake-3.30.5/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp",
-    "output": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build/CMakeFiles/CMakeScratch/TryCompile-U8ltvB/CMakeFiles/cmTC_c9453.dir/CMakeCXXCompilerABI.cpp.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/piy3c3g0f6diyl0wqxxlvc8mwi2pawbl-clang-wrapper-18.1.8/bin/cc",
-      "-I/home/knakto/knakto/core-loop/cube3D/lib/MLX42/include",
-      "-std=c11",
-      "-fPIC",
-      "-D",
-      "LODEPNG_NO_COMPILE_ENCODER",
-      "-D",
-      "LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS",
-      "-D",
-      "NDEBUG",
-      "-Wextra",
-      "-Wall",
-      "-Werror",
-      "-Wunreachable-code",
-      "-Wno-char-subscripts",
-      "-Wno-sign-compare",
-      "-Wno-unused-parameter",
-      "-Wno-missing-field-initializers",
-      "-Ofast",
-      "-c",
-      "-o",
-      "CMakeFiles/mlx42.dir/src/mlx_init.c.o",
-      "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/src/mlx_init.c"
-    ],
-    "directory": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build",
-    "file": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/src/mlx_init.c",
-    "output": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build/CMakeFiles/mlx42.dir/src/mlx_init.c.o"
+    "output": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build/CMakeFiles/CMakeScratch/TryCompile-gLYfcV/CMakeFiles/cmTC_36858.dir/CMakeCXXCompilerABI.cpp.o"
   },
   {
     "arguments": [
@@ -1381,12 +1351,12 @@
       "-Ofast",
       "-c",
       "-o",
-      "CMakeFiles/mlx42.dir/src/mlx_images.c.o",
-      "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/src/mlx_images.c"
+      "CMakeFiles/mlx42.dir/src/mlx_exit.c.o",
+      "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/src/mlx_exit.c"
     ],
     "directory": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build",
-    "file": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/src/mlx_images.c",
-    "output": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build/CMakeFiles/mlx42.dir/src/mlx_images.c.o"
+    "file": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/src/mlx_exit.c",
+    "output": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build/CMakeFiles/mlx42.dir/src/mlx_exit.c.o"
   },
   {
     "arguments": [
@@ -1411,12 +1381,42 @@
       "-Ofast",
       "-c",
       "-o",
-      "CMakeFiles/mlx42.dir/src/mlx_exit.c.o",
-      "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/src/mlx_exit.c"
+      "CMakeFiles/mlx42.dir/src/mlx_init.c.o",
+      "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/src/mlx_init.c"
     ],
     "directory": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build",
-    "file": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/src/mlx_exit.c",
-    "output": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build/CMakeFiles/mlx42.dir/src/mlx_exit.c.o"
+    "file": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/src/mlx_init.c",
+    "output": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build/CMakeFiles/mlx42.dir/src/mlx_init.c.o"
+  },
+  {
+    "arguments": [
+      "/nix/store/piy3c3g0f6diyl0wqxxlvc8mwi2pawbl-clang-wrapper-18.1.8/bin/cc",
+      "-I/home/knakto/knakto/core-loop/cube3D/lib/MLX42/include",
+      "-std=c11",
+      "-fPIC",
+      "-D",
+      "LODEPNG_NO_COMPILE_ENCODER",
+      "-D",
+      "LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS",
+      "-D",
+      "NDEBUG",
+      "-Wextra",
+      "-Wall",
+      "-Werror",
+      "-Wunreachable-code",
+      "-Wno-char-subscripts",
+      "-Wno-sign-compare",
+      "-Wno-unused-parameter",
+      "-Wno-missing-field-initializers",
+      "-Ofast",
+      "-c",
+      "-o",
+      "CMakeFiles/mlx42.dir/src/mlx_images.c.o",
+      "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/src/mlx_images.c"
+    ],
+    "directory": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build",
+    "file": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/src/mlx_images.c",
+    "output": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build/CMakeFiles/mlx42.dir/src/mlx_images.c.o"
   },
   {
     "arguments": [
@@ -1801,36 +1801,6 @@
       "-Ofast",
       "-c",
       "-o",
-      "CMakeFiles/mlx42.dir/src/textures/mlx_texture.c.o",
-      "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/src/textures/mlx_texture.c"
-    ],
-    "directory": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build",
-    "file": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/src/textures/mlx_texture.c",
-    "output": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build/CMakeFiles/mlx42.dir/src/textures/mlx_texture.c.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/piy3c3g0f6diyl0wqxxlvc8mwi2pawbl-clang-wrapper-18.1.8/bin/cc",
-      "-I/home/knakto/knakto/core-loop/cube3D/lib/MLX42/include",
-      "-std=c11",
-      "-fPIC",
-      "-D",
-      "LODEPNG_NO_COMPILE_ENCODER",
-      "-D",
-      "LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS",
-      "-D",
-      "NDEBUG",
-      "-Wextra",
-      "-Wall",
-      "-Werror",
-      "-Wunreachable-code",
-      "-Wno-char-subscripts",
-      "-Wno-sign-compare",
-      "-Wno-unused-parameter",
-      "-Wno-missing-field-initializers",
-      "-Ofast",
-      "-c",
-      "-o",
       "CMakeFiles/mlx42.dir/src/textures/mlx_xpm42.c.o",
       "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/src/textures/mlx_xpm42.c"
     ],
@@ -1861,12 +1831,12 @@
       "-Ofast",
       "-c",
       "-o",
-      "CMakeFiles/mlx42.dir/lib/glad/glad.c.o",
-      "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/lib/glad/glad.c"
+      "CMakeFiles/mlx42.dir/src/textures/mlx_texture.c.o",
+      "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/src/textures/mlx_texture.c"
     ],
     "directory": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build",
-    "file": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/lib/glad/glad.c",
-    "output": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build/CMakeFiles/mlx42.dir/lib/glad/glad.c.o"
+    "file": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/src/textures/mlx_texture.c",
+    "output": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build/CMakeFiles/mlx42.dir/src/textures/mlx_texture.c.o"
   },
   {
     "arguments": [
@@ -1897,6 +1867,36 @@
     "directory": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build",
     "file": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/lib/png/lodepng.c",
     "output": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build/CMakeFiles/mlx42.dir/lib/png/lodepng.c.o"
+  },
+  {
+    "arguments": [
+      "/nix/store/piy3c3g0f6diyl0wqxxlvc8mwi2pawbl-clang-wrapper-18.1.8/bin/cc",
+      "-I/home/knakto/knakto/core-loop/cube3D/lib/MLX42/include",
+      "-std=c11",
+      "-fPIC",
+      "-D",
+      "LODEPNG_NO_COMPILE_ENCODER",
+      "-D",
+      "LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS",
+      "-D",
+      "NDEBUG",
+      "-Wextra",
+      "-Wall",
+      "-Werror",
+      "-Wunreachable-code",
+      "-Wno-char-subscripts",
+      "-Wno-sign-compare",
+      "-Wno-unused-parameter",
+      "-Wno-missing-field-initializers",
+      "-Ofast",
+      "-c",
+      "-o",
+      "CMakeFiles/mlx42.dir/lib/glad/glad.c.o",
+      "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/lib/glad/glad.c"
+    ],
+    "directory": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build",
+    "file": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/lib/glad/glad.c",
+    "output": "/home/knakto/knakto/core-loop/cube3D/lib/MLX42/build/CMakeFiles/mlx42.dir/lib/glad/glad.c.o"
   },
   {
     "arguments": [
@@ -1962,10 +1962,17 @@
     "arguments": [
       "/nix/store/piy3c3g0f6diyl0wqxxlvc8mwi2pawbl-clang-wrapper-18.1.8/bin/cc",
       "-g3",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-Ofast",
       "-c",
-      "-I./include",
-      "-I./lib/KML/include",
-      "-I./lib/MLX42/include/MLX42/",
+      "-I",
+      "./include",
+      "-I",
+      "./lib/KML/include",
+      "-I",
+      "./lib/MLX42/include/MLX42",
       "-o",
       "srcs/main/cube.o",
       "srcs/main/cube.c"
@@ -1973,5 +1980,166 @@
     "directory": "/home/knakto/knakto/core-loop/cube3D",
     "file": "/home/knakto/knakto/core-loop/cube3D/srcs/main/cube.c",
     "output": "/home/knakto/knakto/core-loop/cube3D/srcs/main/cube.o"
+  },
+  {
+    "arguments": [
+      "/nix/store/piy3c3g0f6diyl0wqxxlvc8mwi2pawbl-clang-wrapper-18.1.8/bin/cc",
+      "-g3",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-Ofast",
+      "-c",
+      "-I",
+      "./include",
+      "-I",
+      "./lib/KML/include",
+      "-I",
+      "./lib/MLX42/include/MLX42",
+      "-o",
+      "srcs/main/hook.o",
+      "srcs/main/hook.c"
+    ],
+    "directory": "/home/knakto/knakto/core-loop/cube3D",
+    "file": "/home/knakto/knakto/core-loop/cube3D/srcs/main/hook.c",
+    "output": "/home/knakto/knakto/core-loop/cube3D/srcs/main/hook.o"
+  },
+  {
+    "arguments": [
+      "/nix/store/piy3c3g0f6diyl0wqxxlvc8mwi2pawbl-clang-wrapper-18.1.8/bin/cc",
+      "-g3",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-Ofast",
+      "-c",
+      "-I",
+      "./include",
+      "-I",
+      "./lib/KML/include",
+      "-I",
+      "./lib/MLX42/include/MLX42",
+      "-o",
+      "srcs/util/get_game.o",
+      "srcs/util/get_game.c"
+    ],
+    "directory": "/home/knakto/knakto/core-loop/cube3D",
+    "file": "/home/knakto/knakto/core-loop/cube3D/srcs/util/get_game.c",
+    "output": "/home/knakto/knakto/core-loop/cube3D/srcs/util/get_game.o"
+  },
+  {
+    "arguments": [
+      "/nix/store/piy3c3g0f6diyl0wqxxlvc8mwi2pawbl-clang-wrapper-18.1.8/bin/cc",
+      "-g3",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-Ofast",
+      "-c",
+      "-I",
+      "./include",
+      "-I",
+      "./lib/KML/include",
+      "-I",
+      "./lib/MLX42/include/MLX42",
+      "-o",
+      "srcs/util/in.o",
+      "srcs/util/in.c"
+    ],
+    "directory": "/home/knakto/knakto/core-loop/cube3D",
+    "file": "/home/knakto/knakto/core-loop/cube3D/srcs/util/in.c",
+    "output": "/home/knakto/knakto/core-loop/cube3D/srcs/util/in.o"
+  },
+  {
+    "arguments": [
+      "/nix/store/piy3c3g0f6diyl0wqxxlvc8mwi2pawbl-clang-wrapper-18.1.8/bin/cc",
+      "-g3",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-Ofast",
+      "-c",
+      "-I",
+      "./include",
+      "-I",
+      "./lib/KML/include",
+      "-I",
+      "./lib/MLX42/include/MLX42",
+      "-o",
+      "srcs/util/walloc.o",
+      "srcs/util/walloc.c"
+    ],
+    "directory": "/home/knakto/knakto/core-loop/cube3D",
+    "file": "/home/knakto/knakto/core-loop/cube3D/srcs/util/walloc.c",
+    "output": "/home/knakto/knakto/core-loop/cube3D/srcs/util/walloc.o"
+  },
+  {
+    "arguments": [
+      "/nix/store/piy3c3g0f6diyl0wqxxlvc8mwi2pawbl-clang-wrapper-18.1.8/bin/cc",
+      "-g3",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-Ofast",
+      "-c",
+      "-I",
+      "./include",
+      "-I",
+      "./lib/KML/include",
+      "-I",
+      "./lib/MLX42/include/MLX42",
+      "-o",
+      "srcs/parser/parser_queue.o",
+      "srcs/parser/parser_queue.c"
+    ],
+    "directory": "/home/knakto/knakto/core-loop/cube3D",
+    "file": "/home/knakto/knakto/core-loop/cube3D/srcs/parser/parser_queue.c",
+    "output": "/home/knakto/knakto/core-loop/cube3D/srcs/parser/parser_queue.o"
+  },
+  {
+    "arguments": [
+      "/nix/store/piy3c3g0f6diyl0wqxxlvc8mwi2pawbl-clang-wrapper-18.1.8/bin/cc",
+      "-g3",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-Ofast",
+      "-c",
+      "-I",
+      "./include",
+      "-I",
+      "./lib/KML/include",
+      "-I",
+      "./lib/MLX42/include/MLX42",
+      "-o",
+      "srcs/parser/parser_tile.o",
+      "srcs/parser/parser_tile.c"
+    ],
+    "directory": "/home/knakto/knakto/core-loop/cube3D",
+    "file": "/home/knakto/knakto/core-loop/cube3D/srcs/parser/parser_tile.c",
+    "output": "/home/knakto/knakto/core-loop/cube3D/srcs/parser/parser_tile.o"
+  },
+  {
+    "arguments": [
+      "/nix/store/piy3c3g0f6diyl0wqxxlvc8mwi2pawbl-clang-wrapper-18.1.8/bin/cc",
+      "-g3",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-Ofast",
+      "-c",
+      "-I",
+      "./include",
+      "-I",
+      "./lib/KML/include",
+      "-I",
+      "./lib/MLX42/include/MLX42",
+      "-o",
+      "srcs/parser/parser_player.o",
+      "srcs/parser/parser_player.c"
+    ],
+    "directory": "/home/knakto/knakto/core-loop/cube3D",
+    "file": "/home/knakto/knakto/core-loop/cube3D/srcs/parser/parser_player.c",
+    "output": "/home/knakto/knakto/core-loop/cube3D/srcs/parser/parser_player.o"
   }
 ]
