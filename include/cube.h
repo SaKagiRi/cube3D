@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:29 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/05 10:32:46 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/05 12:11:23 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# include "kml.h"
+# include "../lib/KML/include/kml.h"
 # include "MLX42.h"
 // #include "minimap.h"
 
@@ -144,7 +144,9 @@ typedef struct s_map
  */
 typedef struct s_player
 {
-	int	pos;
+	int		dir;
+	long	x;
+	long	y;
 }	t_player;
 
 typedef struct s_game
@@ -166,6 +168,8 @@ void	get_queue(t_map *map, int fd);
 
 void	clear_tile(t_tile **map, int row);
 void	parse_tile(t_map *map);
+
+void	init_player(char type, int x, int y);
 
 t_game	*get_game(void);
 

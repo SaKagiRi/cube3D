@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:01 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/05 04:04:25 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/05 12:13:11 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ int	main(int argc, char **argv)
 	if (game->err != OK)
 	{
 		clear_list(game->map.vecmap.raw_map);
+		if (game->err == CHARAC_ERR)
+			clear_tile(game->map.map, game->map.row);
 		msg_exit("Error during parsing.\n", 1);
 	}
 	// game->mlx = mlx_init(1920, 1080, "Cusbe3D", true);
@@ -74,8 +76,8 @@ int	main(int argc, char **argv)
 		cur = cur->next;
 	}
 	printf("row : %u col : %u\n", game->map.row, game->map.col);
+	printf("player x : %zu player y : %zu directions %d\n", game->player.x, game->player.y, game->player.dir);
 	clear_list(game->map.vecmap.raw_map);
-	// clear_tile(game->map.map, game->map.row);
-	free(game->map.map);
+	clear_tile(game->map.map, game->map.row);
 	msg_exit("EXIT SUCCESSFULLY.\n", 0);
 }

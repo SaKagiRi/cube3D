@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_tile.c                                       :+:      :+:    :+:   */
+/*   parser_tile.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 03:29:11 by kawaii            #+#    #+#             */
-/*   Updated: 2025/06/05 10:56:13 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/05 12:11:17 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-#include "stdlib.h"
 
 void	clear_tile(t_tile **map, int row)
 {
@@ -25,22 +24,16 @@ void	clear_tile(t_tile **map, int row)
 
 static void	new_tile(t_tile *tile, char type, int x, int y)
 {
-	// res = (t_tile){(x + 1) * 100, y * 100, END};
-	// if (type == '0' || in(type, "NEWS"))
-	// 	res.type = PATH;
-	// else if (type == '1')
-	// 	res.type = WALL;
-	// else if (type == ' ')
-	// 	res.type = EMPT;
 	tile->x = (x + 1) * 100;
-	tile->y = y * 100;
-	if (type == '0' || in(type, "NEWS"))
+	tile->y = (y + 1) * 100;
+	if (in(type, "NEWS"))
+		init_player(type, tile->x, tile->y);
+	else if (type == '0')
 		tile->type = PATH;
 	else if (type == '1')
 		tile->type = WALL;
 	else if (type == ' ')
 		tile->type = EMPT;
-	// return (res);
 }
 
 static void	end_tile(t_tile *tile)
@@ -54,9 +47,10 @@ static int	init_tile(t_map *map)
 	unsigned int	i;
 
 	i = 0;
-	size = sizeof(t_tile) * (map->col + 1);
-	if (walloc((void **)&map->map, sizeof(t_tile *) * (map->row + 1)) == MEM_ERR)
+	size = sizeof(t_tile *) * (map->row + 1);
+	if (walloc((void **)&map->map, size) == MEM_ERR)
 		return (1);
+	size = sizeof(t_tile) * (map->col + 1);
 	while (i < map->row)
 	{
 		if (walloc((void **)&map->map[i], size) == MEM_ERR)
@@ -76,7 +70,7 @@ void	parse_tile(t_map *map)
 	int			i;
 	int			j;
 
-	i = 1;
+	i = 0;
 	cur = map->vecmap.raw_map;
 	if (init_tile(map))
 		return ;

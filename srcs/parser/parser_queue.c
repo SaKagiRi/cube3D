@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 01:25:07 by kawaii            #+#    #+#             */
-/*   Updated: 2025/06/05 03:30:13 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/05 11:43:42 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,17 +80,13 @@ void	get_queue(t_map *map, int fd)
 	t_game	*game;
 	char	*buf;
 	void	*tmp;
-	int		n_charac;
 
 	game = get_game();
 	buf = get_next_line(fd);
-	n_charac = 0;
 	while (buf != NULL)
 	{
 		tmp = buf;
 		buf = ft_strtrim(buf, "\n");
-		if (in('N', buf) || in('E', buf) || in('W', buf) || in('S', buf))
-			n_charac++;
 		free(tmp);
 		if (!valid_str(buf, &map->col))
 			game->err = MAP_ERR;
@@ -100,6 +96,4 @@ void	get_queue(t_map *map, int fd)
 		buf = get_next_line(fd);
 		game->map.row++;
 	}
-	if (n_charac != 1)
-		game->err = CHARAC_ERR;
 }

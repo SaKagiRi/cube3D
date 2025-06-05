@@ -4,7 +4,7 @@ CC			= cc
 #------------[FLAGS]
 CFLAGS		= $(DEBUG_FLAGS) $(W_FLAGS)
 DEBUG_FLAGS	= -g3
-W_FLAGS		= -Wall -Wextra -Werror # -Ofast
+W_FLAGS		= -Wall -Wextra -Werror -Ofast
 #------------[LIBRARY]
 LIBFT_DIR	= ./lib/KML
 LIBFT_FILE	= $(LIBFT_DIR)/kml.a
@@ -16,19 +16,24 @@ MLX_HEADER	= $(MLX_DIR)/include/MLX42
 SRC			= $(addprefix srcs/, $(FILE))
 OBJ			= $(SRC:.c=.o)
 #------------[ROOT_FILES]
-FILE		= $(MAIN) $(UTIL)# TODO: add your module name
+FILE		= $(MAIN) $(UTIL) $(PARSER)# TODO: add your module name
 HEADER		= -I ./include -I $(LIBFT_HEADER) -I $(MLX_HEADER)
 LIB			= $(LIBFT_FILE) $(MLX_FILE)
 #------------[SUBFILES]
+INC_FILE	= cube
+INC			= $(addprefix include/, $(addsuffix .h, $(INC_FILE)))
 #------------[MAIN]
 MAIN			= $(addprefix $(MAIN_PATH)/, $(addsuffix .c, $(MAIN_FILE)))
 MAIN_PATH		= main
-MAIN_FILE		= cube hook parser_queue parse_tile
+MAIN_FILE		= cube hook
 #------------[UTIL]
 UTIL			= $(addprefix $(UTIL_PATH)/, $(addsuffix .c, $(UTIL_FILE)))
 UTIL_PATH		= util
 UTIL_FILE		= get_game in walloc # dalloc
-#TODO:
+#------------[PARSER]
+PARSER			= $(addprefix $(PARSER_PATH)/parser_, $(addsuffix .c, $(PARSER_FILE)))
+PARSER_PATH		= parser
+PARSER_FILE		= queue tile player
 #------------[MODULE]
 # MODULE_NAME	= $(addprefix $(MODULE_PATH)/, $(MODULE_FILE))
 # MODULE_PATH	= module
@@ -40,10 +45,10 @@ UTIL_FILE		= get_game in walloc # dalloc
 
 #------------[PROCESS]
 all: lib $(NAME)
-$(NAME): $(OBJ) ./include/cube.h
+$(NAME): $(OBJ)
 		@$(CC) $(CFLAGS) $(OBJ) $(LIB) $(HEADER) -o $@
 		@printf "\033[38;5;46m\033[1m⟪ Complete ⟫\033[0m\n"
-%.o: %.c Makefile
+%.o: %.c Makefile $(INC)
 	@printf "\033[38;5;226;1m"
 	$(CC) $(CFLAGS) -c $< -o $@ $(HEADER)
 	@printf "\033[1A\033[2K"
