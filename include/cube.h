@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:29 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/05 12:11:23 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/05 12:23:45 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# include "../lib/KML/include/kml.h"
+# include "kml.h"
 # include "MLX42.h"
 // #include "minimap.h"
 
