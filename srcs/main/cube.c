@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:01 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/03 03:55:28 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/05 04:04:25 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,18 @@ int	main(int argc, char **argv)
 	if (init_file(argv[1]) == FILE_ERR)
 		msg_exit("Problem with entered path.\n", 1);
 	get_queue(&game->map, game->map.map_fd);
-	if (game->err == MAP_ERR)
+	if (game->err != OK)
 	{
 		clear_list(game->map.vecmap.raw_map);
 		msg_exit("Map contain invalid character.\n", 1);
 	}
-	// game->mlx = mlx_init(1920, 1080, "Cube3D", true);
+	parse_tile(&game->map);
+	if (game->err != OK)
+	{
+		clear_list(game->map.vecmap.raw_map);
+		msg_exit("Error during parsing.\n", 1);
+	}
+	// game->mlx = mlx_init(1920, 1080, "Cusbe3D", true);
 	// if (!game->mlx)
 	// 	return (1);
 	// mlx_loop_hook(game->mlx, keyhook, game->mlx);
@@ -69,5 +75,7 @@ int	main(int argc, char **argv)
 	}
 	printf("row : %u col : %u\n", game->map.row, game->map.col);
 	clear_list(game->map.vecmap.raw_map);
+	// clear_tile(game->map.map, game->map.row);
+	free(game->map.map);
 	msg_exit("EXIT SUCCESSFULLY.\n", 0);
 }

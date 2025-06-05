@@ -23,11 +23,11 @@ LIB			= $(LIBFT_FILE) $(MLX_FILE)
 #------------[MAIN]
 MAIN			= $(addprefix $(MAIN_PATH)/, $(addsuffix .c, $(MAIN_FILE)))
 MAIN_PATH		= main
-MAIN_FILE		= cube hook parser_queue
+MAIN_FILE		= cube hook parser_queue parse_tile
 #------------[UTIL]
 UTIL			= $(addprefix $(UTIL_PATH)/, $(addsuffix .c, $(UTIL_FILE)))
 UTIL_PATH		= util
-UTIL_FILE		= get_game in walloc
+UTIL_FILE		= get_game in walloc # dalloc
 #TODO:
 #------------[MODULE]
 # MODULE_NAME	= $(addprefix $(MODULE_PATH)/, $(MODULE_FILE))

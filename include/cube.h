@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:29 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/03 03:28:35 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/05 10:32:46 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,19 @@
 
 # include "kml.h"
 # include "MLX42.h"
+// #include "minimap.h"
 
 # ifndef LIMIT_MAP_SIZE
 #  define LIMIT_MAP_SIZE 100
 # endif
+
+typedef enum e_type
+{
+	END,
+	EMPT,
+	PATH,
+	WALL,
+}	t_type;
 
 /**
  * 
@@ -39,10 +48,12 @@
 typedef enum e_err
 {
 	OK,
+	MEM_ERR,
 	ARG_ERR,
 	FILE_ERR,
 	MAP_ERR,
-	MEM_ERR
+	CHARAC_ERR,
+	OVR_LM
 }	t_err;
 
 /**
@@ -53,6 +64,13 @@ typedef struct s_mapvec
 	t_list	*raw_map;
 	t_list	*cur_row;
 }	t_mapvec;
+
+typedef struct s_tile
+{
+	int		x;
+	int		y;
+	t_type	type;
+}	t_tile;
 
 /**
  * @brief color is compose of 4 byte of color each has 8 bit.
@@ -87,6 +105,16 @@ typedef union u_color
 	unsigned int	rgb_hex;
 }	t_color;
 
+typedef struct s_text
+{
+	mlx_texture_t	n_txt;
+	mlx_texture_t	e_txt;
+	mlx_texture_t	s_txt;
+	mlx_texture_t	w_txt;
+	t_color			f_color;
+	t_color			c_color;
+}	t_text;
+
 /**
  * 
  * - mlx_texture_t `n_txt` - North texture.
@@ -108,13 +136,7 @@ typedef struct s_map
 	unsigned int	col;
 	unsigned int	row;
 	t_mapvec		vecmap;
-	char			**map;
-	mlx_texture_t	n_txt;
-	mlx_texture_t	e_txt;
-	mlx_texture_t	s_txt;
-	mlx_texture_t	w_txt;
-	t_color			f_color;
-	t_color			c_color;
+	t_tile			**map;
 }	t_map;
 
 /**
@@ -130,16 +152,20 @@ typedef struct s_game
 	mlx_t		*mlx;
 	t_player	player;
 	t_map		map;
+	t_text		text;
 	t_err		err;
 }	t_game;
 
 int		in(char c, char	*set);
-t_err	walloc(void *arg, size_t size);
+t_err	walloc(void **arg, size_t size);
 
 void	clear_queue(t_list *raw_map, void (*f)(void *));
 void	lst_iter(t_list *raw_map, void (*f)(void *));
 void	clear_list(t_list *row);
 void	get_queue(t_map *map, int fd);
+
+void	clear_tile(t_tile **map, int row);
+void	parse_tile(t_map *map);
 
 t_game	*get_game(void);
 
