@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:01 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/05 12:13:11 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/06 17:04:48 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	init_file(char *path)
 	return (game->err);
 }
 
-int	main(int argc, char **argv)
+void	parser(int argc, char **argv)
 {
 	t_game	*game;
 
@@ -60,24 +60,25 @@ int	main(int argc, char **argv)
 			clear_tile(game->map.map, game->map.row);
 		msg_exit("Error during parsing.\n", 1);
 	}
-	// game->mlx = mlx_init(1920, 1080, "Cusbe3D", true);
-	// if (!game->mlx)
-	// 	return (1);
-	// mlx_loop_hook(game->mlx, keyhook, game->mlx);
-	// mlx_loop(game->mlx);
-	// mlx_terminate(game->mlx);
-	t_list	*cur;
-
-	cur = game->map.vecmap.raw_map;
-	while (cur != NULL)
-	{
-		ft_putstr_fd(cur->content, 1);
-		ft_putstr_fd("\n", 1);
-		cur = cur->next;
-	}
-	printf("row : %u col : %u\n", game->map.row, game->map.col);
-	printf("player x : %zu player y : %zu directions %d\n", game->player.x, game->player.y, game->player.dir);
 	clear_list(game->map.vecmap.raw_map);
+}
+
+void	intit(void)
+{
+	get_game()->scale = 20;
+	get_game()->first_render = true;
+}
+
+int	main(int argc, char **argv)
+{
+	t_game	*game;
+
+	intit();
+	parser(argc, argv);
+	game = get_game();
+
+	mlx();
+
 	clear_tile(game->map.map, game->map.row);
 	msg_exit("EXIT SUCCESSFULLY.\n", 0);
 }

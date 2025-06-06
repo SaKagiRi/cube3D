@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 11:45:04 by kawaii            #+#    #+#             */
-/*   Updated: 2025/06/05 11:50:38 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/06 13:47:36 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	init_player(char type, int x, int y)
 	}
 	if (in(type, "NEWS"))
 	{
-		game->player.x = x - 50;
-		game->player.y = y - 50;
+		game->player.x = x - (get_game()->scale / 2);
+		game->player.y = y - (get_game()->scale / 2);;
 		if (type == 'N')
 			game->player.dir = 0;
 		if (type == 'E')

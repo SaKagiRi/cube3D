@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 03:29:11 by kawaii            #+#    #+#             */
-/*   Updated: 2025/06/05 12:11:17 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/06 14:40:52 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,27 @@
 
 void	clear_tile(t_tile **map, int row)
 {
+	static bool b = false;
 	int	i;
 
 	i = 0;
+	if (b)
+		return ;
 	while (i < row)
 		free(map[i++]);
 	free(map);
+	b = true;
 }
 
 static void	new_tile(t_tile *tile, char type, int x, int y)
 {
-	tile->x = (x + 1) * 100;
-	tile->y = (y + 1) * 100;
+	tile->x = (x + 1) * get_game()->scale;
+	tile->y = (y + 1) * get_game()->scale;
 	if (in(type, "NEWS"))
+	{
 		init_player(type, tile->x, tile->y);
+		tile->type = PATH;
+	}
 	else if (type == '0')
 		tile->type = PATH;
 	else if (type == '1')
@@ -60,6 +67,7 @@ static int	init_tile(t_map *map)
 		}
 		i++;
 	}
+	map->map[i] = NULL;
 	return (0);
 }
 

@@ -16,11 +16,11 @@ MLX_HEADER	= $(MLX_DIR)/include/MLX42
 SRC			= $(addprefix srcs/, $(FILE))
 OBJ			= $(SRC:.c=.o)
 #------------[ROOT_FILES]
-FILE		= $(MAIN) $(UTIL) $(PARSER)# TODO: add your module name
+FILE		= $(MAIN) $(UTIL) $(PARSER) $(DISPLAY)
 HEADER		= -I ./include -I $(LIBFT_HEADER) -I $(MLX_HEADER)
 LIB			= $(LIBFT_FILE) $(MLX_FILE)
 #------------[SUBFILES]
-INC_FILE	= cube
+INC_FILE	= cube map game
 INC			= $(addprefix include/, $(addsuffix .h, $(INC_FILE)))
 #------------[MAIN]
 MAIN			= $(addprefix $(MAIN_PATH)/, $(addsuffix .c, $(MAIN_FILE)))
@@ -34,15 +34,10 @@ UTIL_FILE		= get_game in walloc # dalloc
 PARSER			= $(addprefix $(PARSER_PATH)/parser_, $(addsuffix .c, $(PARSER_FILE)))
 PARSER_PATH		= parser
 PARSER_FILE		= queue tile player
-#------------[MODULE]
-# MODULE_NAME	= $(addprefix $(MODULE_PATH)/, $(MODULE_FILE))
-# MODULE_PATH	= module
-# MODULE_FILE	= files.c
-#	------------[SUB_MODULE]
-#	SUB_MODULE_NAME		= $(addprefix $(SUB_MODULE_PATH)/, $(SUB_MODULE_FILE))
-#	SUB_MODULE_PATH		= sub_module
-#	SUB_MODULE_FILE		= files.c
-
+#------------[DISPLAY]
+DISPLAY				= $(addprefix $(DISPLAY_PATH)/, $(addsuffix .c, $(DISPLAY_FILE)))
+DISPLAY_PATH		= mlx
+DISPLAY_FILE		= mlxinit texture cohen drawline print_map key_bind
 #------------[PROCESS]
 all: lib $(NAME)
 $(NAME): $(OBJ)
