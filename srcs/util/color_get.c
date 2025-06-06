@@ -1,41 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube.c                                             :+:      :+:    :+:   */
+/*   color_get.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/19 11:31:01 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/06 17:57:45 by kawaii           ###   ########.fr       */
+/*   Created: 2024/10/11 00:51:58 by pibasri           #+#    #+#             */
+/*   Updated: 2025/06/05 12:25:30 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-#include "fcntl.h"
-#include <stdio.h>
 
-void	msg_exit(char *str, int num)
+// 'Encodes' four individual bytes into an int.
+int	get_rgba(int r, int g, int b, int a)
 {
-	ft_putstr_fd(str, 2);
-	exit(num);
+	return (r << 24 | g << 16 | b << 8 | a);
 }
 
-void	intit(void)
+// Get the red channel.
+int	get_r(int rgba)
 {
-	get_game()->scale = 20;
-	get_game()->first_render = true;
+	return ((rgba >> 24) & 0xFF);
 }
 
-int	main(int argc, char **argv)
+// Get the green channel.
+int	get_g(int rgba)
 {
-	t_game	*game;
+	return ((rgba >> 16) & 0xFF);
+}
 
-	intit();
-	parser(argc, argv);
-	game = get_game();
+// Get the blue channel.
+int	get_b(int rgba)
+{
+	return ((rgba >> 8) & 0xFF);
+}
 
-	mlx();
-
-	clear_tile(game->map.map, game->map.row);
-	ft_exit(0);
+// Get the alpha channel.
+int	get_a(int rgba)
+{
+	return (rgba & 0xFF);
 }

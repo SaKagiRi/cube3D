@@ -29,11 +29,11 @@ MAIN_FILE		= cube hook
 #------------[UTIL]
 UTIL			= $(addprefix $(UTIL_PATH)/, $(addsuffix .c, $(UTIL_FILE)))
 UTIL_PATH		= util
-UTIL_FILE		= get_game in walloc # dalloc
+UTIL_FILE		= get_game in walloc ft_exit# dalloc
 #------------[PARSER]
 PARSER			= $(addprefix $(PARSER_PATH)/parser_, $(addsuffix .c, $(PARSER_FILE)))
 PARSER_PATH		= parser
-PARSER_FILE		= queue tile player
+PARSER_FILE		= queue tile player main
 #------------[DISPLAY]
 DISPLAY				= $(addprefix $(DISPLAY_PATH)/, $(addsuffix .c, $(DISPLAY_FILE)))
 DISPLAY_PATH		= mlx
