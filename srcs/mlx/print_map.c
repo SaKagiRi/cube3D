@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 01:56:42 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/06 17:20:42 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/06 18:05:53 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,30 @@
 
 void	put_player(mlx_texture_t *text, t_player player, size_t color)
 {
-	int		padding;
-	float		i;
-	float		j;
+	float		padding;
+	t_point		front;
+	t_point		left;
+	t_point		right;
 	float		redian;
 
-	padding = 2;
-	i = -padding;
-	while (i < padding)
-	{
-		j = -padding;
-		while (j < padding)
-		{
-			ft_texture(text, player.x + i, player.y + j, color);
-			j++;
-		}
-		i++;
-	}
+	padding = 15;
 	redian = player.dir * PI / 180;
-	i = player.x + 50 * cos(redian);
-	j = player.y + 50 * sin(redian);
-	printf("%f\n", player.dir);
-	// pnf("%d, %d -> %d, %d", player.x, player.y, i, j);
-	bresenham(text, (t_point){0xFF0000, player.x, player.y, 0}, (t_point){0xFF0000, i, j, 0});
-
+	front.color = color;
+	front.outcode = 0;
+	front.px = player.x + padding * cos(redian);
+	front.py = player.y + padding * sin(redian);
+	left.color = color;
+	left.outcode = 0;
+	left.px = player.x + (padding / 3) * cos(redian - PI / 1.5);
+	left.py = player.y + (padding / 3) * sin(redian - PI / 1.5);
+	right.color = color;
+	right.outcode = 0;
+	right.px = player.x + (padding / 3) * cos(redian + PI / 1.5);
+	right.py = player.y + (padding / 3) * sin(redian + PI / 1.5);
+	bresenham(text, front, left);
+	bresenham(text, front, right);
+	bresenham(text, left, right);
+	ft_texture(text, player.x, player.y, color);
 }
 
 void	put_box(mlx_texture_t *text, int x, int y, size_t color)

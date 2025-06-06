@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:48:12 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/06 17:39:55 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/06 18:05:15 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	con(void *mlx)
 	if (get_game()->on_change)
 		return ;
 	text = new_texture(WIDTH, HEIGHT, 0x000000);
-	pnf("a\n");
 	print_map(mlx, text);
 	// img = mlx_texture_to_image(mlx, text);
 	// mlx_image_to_window(mlx, img, 0, 0);
