@@ -6,38 +6,36 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 17:34:39 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/06 19:07:15 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/06 20:02:59 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MLX42.h"
 #include "cube.h"
 #include "game.h"
+#include "map.h"
 #include <math.h>
 
-bool	in_wall(float x, float y)
+bool	in_wall(float x, float y, t_player *temp, float rad)
 {
-	// bool	status;
+	t_tile	**map;
 	int		scale;
-	int		i;
-	int		j;
 
-	// status = false;
 	scale = get_game()->scale;
-	x -= 1;
-	y -= 1;
-	i = 0;
-	printf("%f, %f\n", x, y);
-	while (i < 3)
+	map = get_game()->map.map;
+	if ((int)(x / scale) == (int)(temp->x / scale) || (int)(y / scale) == (int)(temp->y / scale))
 	{
-		j = 0;
-		while (j < 3)
-		{
-			if (get_game()->map.map[(int)((x + i) / scale)][(int)((y + j) / scale)].type == WALL)
-				return (false);
-			j++;
-		}
-		i++;
+		pnf("%d, %d\n", (int)(x / scale), (int)(y / scale));
+		// pnf("%d\n", get_game()->map.map[(int)(*x1 / get_game()->scale) + 1][(int)(*y1 / get_game()->scale) + 1].type);
+		if (get_game()->map.map[(int)(x / scale)][(int)(y / scale)].type == WALL)
+			return (false);
+		return (true);
+	}
+	if (map[(int)(temp->x / scale)][(int)y / scale].type == WALL && map[(int)(x / scale)][(int)(temp->y / scale)].type == WALL)
+	{
+		temp->x += cos(rad) * 3;
+		temp->y -= sin(rad) * 3;
+		return (false);
 	}
 	return (true);
 }
@@ -62,10 +60,9 @@ void	player_walk(mlx_t *mlx)
 	{
 		*x1 -= y2 * 3;
 		*y1 += x2 * 3;
-		pnf("%d, %d\n",((int)(*x1 / get_game()->scale)), ((int)(*y1 / get_game()->scale)));
-		// pnf("%d\n", get_game()->map.map[(int)(*x1 / get_game()->scale) + 1][(int)(*y1 / get_game()->scale) + 1].type);
+		// pnf("%d, %d\n",((int)(*x1 / get_game()->scale)), ((int)(*y1 / get_game()->scale)));
 		// if ( == WALL)
-		if (in_wall(*x1, *y1))
+		if (!in_wall(*x1, *y1, &temp, rad))
 		{
 			*x1 = temp.x;
 			*y1 = temp.y;
@@ -75,7 +72,7 @@ void	player_walk(mlx_t *mlx)
 	{
 		*x1 += y2 * 3;
 		*y1 -= x2 * 3;
-		if (get_game()->map.map[(int)*x1][(int)*y1].type == WALL)
+		if (!in_wall(*x1, *y1, &temp, rad))
 		{
 			*x1 = temp.x;
 			*y1 = temp.y;
