@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:29 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/06 18:02:44 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/06 23:17:00 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,8 @@ int		get_b(int rgba);
 int		get_a(int rgba);
 
 void	ft_exit(int n);
+
+void	player_walk(mlx_t *mlx);
+void	put_player(mlx_texture_t *text, t_player player, size_t color);
 
 #endif

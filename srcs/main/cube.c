@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:01 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/06 18:35:04 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/06 23:22:47 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@ void	msg_exit(char *str, int num)
 
 void	intit(void)
 {
-	get_game()->scale = 20;
 	get_game()->first_render = true;
+	get_game()->scale = 20;
+	get_game()->player_speed = 1.8;
+	get_game()->player_size = 9;
+	get_game()->move_cam_speed = 5;
 }
 
 int	main(int argc, char **argv)
