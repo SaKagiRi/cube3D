@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:26:31 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/06 23:17:47 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/08 01:47:04 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,14 @@
 #  define HEIGHT 1080
 # endif
 
+# ifndef MINI_WIDTH
+#  define MINI_WIDTH 200
+# endif
+
+# ifndef MINI_HEIGHT
+#  define MINI_HEIGHT 150
+# endif
+
 typedef struct s_mlx
 {
 }	t_mlx;
@@ -48,6 +56,7 @@ typedef struct s_game
 	mlx_t			*mlx;
 	mlx_image_t		*img;
 	t_player	player;
+	t_player	minimap;
 	t_map		map;
 	t_text		text;
 	t_err		err;

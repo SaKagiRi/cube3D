@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 01:56:42 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/07 17:27:31 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/08 01:06:45 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ void	print_map(mlx_t *mlx, mlx_texture_t *text)
 		while (map.map[i][j].type != END)
 		{
 			if (map.map[i][j].type == PATH)
-				put_box(text, map.map[i][j].x, map.map[i][j].y, 0xFFFFFF);
+				put_box(text, map.map[i][j].x + get_game()->minimap.x, map.map[i][j].y + get_game()->minimap.y, 0xFFFFFF);
 			else if (map.map[i][j].type == WALL)
-				put_box(text, map.map[i][j].x, map.map[i][j].y, 0xAAAAAA);
+				put_box(text, map.map[i][j].x + get_game()->minimap.x, map.map[i][j].y + get_game()->minimap.y, 0xAAAAAA);
 			j++;
 		}
 		i++;
@@ -70,7 +70,7 @@ void	print_map(mlx_t *mlx, mlx_texture_t *text)
 	put_player(text, get_game()->player, 0xFF0000);
 	// printf("player: %f, %f\n", get_game()->player.x, get_game()->player.y);
 	putray(text);
-	pnf("pass\n");
+	// pnf("pass\n");
 	img = mlx_texture_to_image(get_game()->mlx, text);
 	mlx_image_to_window(get_game()->mlx, img, 10, 10);
 	get_game()->img = img;

@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:48:12 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/07 17:25:07 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/08 01:48:49 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	con(void *mlx)
 	bind(mlx);
 	if (game->on_change)
 		return ;
-	minimap = new_texture(WIDTH, HEIGHT, 0x000000);
+	minimap = new_texture(MINI_WIDTH, MINI_HEIGHT, 0x000000);
 	print_map(mlx, minimap);
 	// img = mlx_texture_to_image(mlx, text);
 	// mlx_image_to_window(mlx, img, 0, 0);
@@ -41,11 +41,12 @@ void	mlx(void)
 	t_game	*game;
 
 	game = get_game();
+	get_game()->minimap.x =  (int)(MINI_WIDTH / 2) -game->player.x;
+	get_game()->minimap.y = (int)(MINI_HEIGHT / 2) - game->player.y;
 	game->on_change = false;
 	game->mlx = mlx_init(WIDTH, HEIGHT, "game", true);
 	// mlx_key_hook(game->mlx, bind, game->mlx);
 	mlx_loop_hook(game->mlx, con, game->mlx);
-	pnf("hello\n");
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);
 }

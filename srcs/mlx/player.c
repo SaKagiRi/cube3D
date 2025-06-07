@@ -6,10 +6,13 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 23:14:40 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/07 16:50:28 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/08 01:50:22 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "MLX42.h"
+#include "cube.h"
+#include "game.h"
 #include "ray.h"
 
 static bool	in_wall(float x, float y, t_player *temp)
@@ -36,17 +39,23 @@ static bool	in_wall(float x, float y, t_player *temp)
 
 static bool	use_walk(int key, float *x1, float *y1, float rad)
 {
-	t_game	*game;
+	t_game		*game;
+	t_player	*minimap;
 
 	game = get_game();
+	minimap = &get_game()->minimap;
 	if (key == 'w')
 	{
+		minimap->x += sin(rad) * game->player_speed;
+		minimap->y -= cos(rad) * game->player_speed;
 		*x1 -= sin(rad) * game->player_speed;
 		*y1 += cos(rad) * game->player_speed;
 		return (true);
 	}
 	else if (key == 's')
 	{
+		minimap->x -= sin(rad) * game->player_speed;
+		minimap->y += cos(rad) * game->player_speed;
 		*x1 += sin(rad) * game->player_speed;
 		*y1 -= cos(rad) * game->player_speed;
 		return (true);
@@ -57,6 +66,7 @@ static bool	use_walk(int key, float *x1, float *y1, float rad)
 void	player_walk(mlx_t *mlx)
 {
 	t_player	*player;
+	t_player	minimap;
 	t_player	temp;
 	float		rad;
 	bool		status;
@@ -64,6 +74,8 @@ void	player_walk(mlx_t *mlx)
 	player = &get_game()->player;
 	rad = (player->dir - 90) * PI / 180;
 	status = false;
+	minimap.x = get_game()->minimap.x;
+	minimap.y = get_game()->minimap.y;
 	temp.x = player->x;
 	temp.y = player->y;
 	if (mlx_is_key_down(mlx, MLX_KEY_W))
@@ -74,21 +86,21 @@ void	player_walk(mlx_t *mlx)
 	{
 		player->x = temp.x;
 		player->y = temp.y;
+		get_game()->minimap.x = minimap.x;
+		get_game()->minimap.y = minimap.y;
 	}
 	if (status)
 		get_game()->on_change = 0;
 }
 
-void	put_player(mlx_texture_t *text, t_player player, size_t color)
+void	put_body(mlx_texture_t *text, t_player player, float rad, size_t color)
 {
 	float		padding;
 	t_point		front;
 	t_point		left;
 	t_point		right;
-	float		rad;
 
 	padding = get_game()->player_size;
-	rad = player.dir * PI / 180;
 	front.color = color;
 	front.outcode = 0;
 	front.px = player.x + padding * cos(rad);
@@ -104,6 +116,16 @@ void	put_player(mlx_texture_t *text, t_player player, size_t color)
 	bresenham(text, front, left);
 	bresenham(text, front, right);
 	bresenham(text, left, right);
+}
+
+void	put_player(mlx_texture_t *text, t_player player, size_t color)
+{
+	float		rad;
+
+	player.x = (int)(MINI_WIDTH / 2);
+	player.y = (int)(MINI_HEIGHT / 2);
+	rad = player.dir * PI / 180;
+	put_body(text, player, rad, color);
 	ft_texture(text, player.x, player.y, color);
 }
 

@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 16:20:23 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/07 17:41:31 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/08 02:18:32 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_vec2	find_hit(float rad, float x, float y)
 	cur.x = x;
 	cur.y = y;
 	while (r <= 5 * scale)
+	// while (r >= 0)
 	{
 		temp.x = cur.x;
 		temp.y = cur.y;
@@ -55,22 +56,26 @@ void	putray(mlx_texture_t *text)
 {
 	t_vec2		hit;
 	t_player	player;
+	t_player	minimap;
 	float		rad;
 	float		i;
 
 	player = get_game()->player;
+	minimap = get_game()->minimap;
 	rad = player.dir * PI / 180;
 	hit = find_hit(rad + 0.4, player.x, player.y);
-	bresenham(text, (t_point){0x000000, player.x, player.y, 0}, (t_point){0x000000, hit.x, hit.y, 0});
+	bresenham(text, (t_point){0x000000, player.x + minimap.x, player.y + minimap.y, 0}, (t_point){0x000000, hit.x + minimap.x, hit.y + minimap.y, 0});
 	hit = find_hit(rad - 0.4, player.x, player.y);
-	bresenham(text, (t_point){0x000000, player.x, player.y, 0}, (t_point){0x000000, hit.x, hit.y, 0});
+	bresenham(text, (t_point){0x000000, player.x + minimap.x, player.y + minimap.y, 0}, (t_point){0x000000, hit.x + minimap.x, hit.y + minimap.y, 0});
 	printf("->>%f\n", distance(player.x, player.y, hit.x, hit.y));
 	i = -0.39;
 	while (i < 0.39)
 	{
 		hit = find_hit(rad + i, player.x, player.y);
-		bresenham(text, (t_point){0xAAAADD, player.x, player.y, 0}, (t_point){0xAAAADD, hit.x, hit.y, 0});
+		// if ((int)(hit.x) % get_game()->scale == 0 && (int)(hit.y) % get_game()->scale == 0)
+		// 	bresenham(text, (t_point){0xFF0000, player.x + minimap.x, player.y + minimap.y, 0}, (t_point){0xFF0000 , hit.x + minimap.x, hit.y + minimap.y, 0});
+		// else
+			bresenham(text, (t_point){0xAAAADD, player.x + minimap.x, player.y + minimap.y, 0}, (t_point){0xAAAADD, hit.x + minimap.x, hit.y + minimap.y, 0});
 		i += 0.001;
 	}
-	pnf("aaa\n");
 }
