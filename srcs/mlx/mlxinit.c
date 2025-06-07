@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:48:12 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/07 16:51:03 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/07 17:25:07 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 void	con(void *mlx)
 {
 	// mlx_image_t		*img;
-	mlx_texture_t	*text;
+	mlx_texture_t	*minimap;
 	t_game			*game;
 
 	// (void)mlx;
@@ -27,12 +27,12 @@ void	con(void *mlx)
 	bind(mlx);
 	if (game->on_change)
 		return ;
-	text = new_texture(WIDTH, HEIGHT, 0x000000);
-	print_map(mlx, text);
+	minimap = new_texture(WIDTH, HEIGHT, 0x000000);
+	print_map(mlx, minimap);
 	// img = mlx_texture_to_image(mlx, text);
 	// mlx_image_to_window(mlx, img, 0, 0);
 	// mlx_delete_image(mlx, img);
-	mlx_delete_texture(text);
+	mlx_delete_texture(minimap);
 	game->on_change = true;
 }
 

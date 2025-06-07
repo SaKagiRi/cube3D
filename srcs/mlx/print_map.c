@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 01:56:42 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/07 16:51:32 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/07 17:27:31 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,10 @@ void	print_map(mlx_t *mlx, mlx_texture_t *text)
 		i++;
 	}
 	put_player(text, get_game()->player, 0xFF0000);
+	// printf("player: %f, %f\n", get_game()->player.x, get_game()->player.y);
 	putray(text);
+	pnf("pass\n");
 	img = mlx_texture_to_image(get_game()->mlx, text);
-	mlx_image_to_window(get_game()->mlx, img, 0, 0);
+	mlx_image_to_window(get_game()->mlx, img, 10, 10);
 	get_game()->img = img;
 }
