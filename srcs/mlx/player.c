@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 23:14:40 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/07 12:57:53 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/07 13:59:55 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static bool	in_wall(float x, float y, t_player *temp)
 	}
 	if (map[(int)y / scale][(int)(temp->x / scale)].type == WALL \
 && map[(int)(temp->y / scale)][(int)(x / scale)].type == WALL)
-		return (true);
+		return (false);
 	return (true);
 }
 
