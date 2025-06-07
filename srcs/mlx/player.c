@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
+/*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 23:14:40 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/06 23:18:12 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/07 12:57:53 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "game.h"
 #include <math.h>
 
-static bool	in_wall(float x, float y, t_player *temp, float rad)
+static bool	in_wall(float x, float y, t_player *temp)
 {
 	t_tile	**map;
 	int		scale;
@@ -27,32 +27,31 @@ static bool	in_wall(float x, float y, t_player *temp, float rad)
 	if ((int)(x / scale) == (int)(temp->x / scale) \
 || (int)(y / scale) == (int)(temp->y / scale))
 	{
-		if (get_game()->map.map[(int)(y / scale)][(int)(x / scale)].type == WALL)
+		if (map[(int)(y / scale)][(int)(x / scale)].type == WALL)
 			return (false);
 		return (true);
 	}
 	if (map[(int)y / scale][(int)(temp->x / scale)].type == WALL \
 && map[(int)(temp->y / scale)][(int)(x / scale)].type == WALL)
-	{
-		temp->x += cos(rad) * 3;
-		temp->y -= sin(rad) * 3;
-		return (false);
-	}
+		return (true);
 	return (true);
 }
 
 static bool	use_walk(int key, float *x1, float *y1, float rad)
 {
+	t_game	*game;
+
+	game = get_game();
 	if (key == 'w')
 	{
-		*x1 -= sin(rad) * get_game()->player_speed;
-		*y1 += cos(rad) * get_game()->player_speed;
+		*x1 -= sin(rad) * game->player_speed;
+		*y1 += cos(rad) * game->player_speed;
 		return (true);
 	}
 	else if (key == 's')
 	{
-		*x1 += sin(rad) * get_game()->player_speed;
-		*y1 -= cos(rad) * get_game()->player_speed;
+		*x1 += sin(rad) * game->player_speed;
+		*y1 -= cos(rad) * game->player_speed;
 		return (true);
 	}
 	return (false);
@@ -60,26 +59,24 @@ static bool	use_walk(int key, float *x1, float *y1, float rad)
 
 void	player_walk(mlx_t *mlx)
 {
-	float		rad;
-	float		*x1;
-	float		*y1;
+	t_player	*player;
 	t_player	temp;
+	float		rad;
 	bool		status;
 
-	rad = (get_game()->player.dir - 90) * PI / 180.0;
-	x1 = &get_game()->player.x;
-	y1 = &get_game()->player.y;
+	player = &get_game()->player;
+	rad = (player->dir - 90) * PI / 180;
 	status = false;
-	temp.x = *x1;
-	temp.y = *y1;
+	temp.x = player->x;
+	temp.y = player->y;
 	if (mlx_is_key_down(mlx, MLX_KEY_W))
-		status = use_walk('w', x1, y1, rad);
+		status = use_walk('w', &player->x, &player->y, rad);
 	else if (mlx_is_key_down(mlx, MLX_KEY_S))
-		status = use_walk('s', x1, y1, rad);
-	if (!in_wall(*x1, *y1, &temp, rad))
+		status = use_walk('s', &player->x, &player->y, rad);
+	if (!in_wall(player->x, player->y, &temp))
 	{
-		*x1 = temp.x;
-		*y1 = temp.y;
+		player->x = temp.x;
+		player->y = temp.y;
 	}
 	if (status)
 		get_game()->on_change = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlxinit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
+/*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:48:12 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/06 18:05:15 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/07 12:28:39 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 #include "cube.h"
 #include "game.h"
 #include "map.h"
-#include <math.h>
 
 void	con(void *mlx)
 {
 	// mlx_image_t		*img;
 	mlx_texture_t	*text;
+	t_game			*game;
 
 	// (void)mlx;
+	game = get_game();
 	bind(mlx);
-	if (get_game()->on_change)
+	if (game->on_change)
 		return ;
 	text = new_texture(WIDTH, HEIGHT, 0x000000);
 	print_map(mlx, text);
@@ -31,16 +32,19 @@ void	con(void *mlx)
 	// mlx_image_to_window(mlx, img, 0, 0);
 	// mlx_delete_image(mlx, img);
 	mlx_delete_texture(text);
-	get_game()->on_change = true;
+	game->on_change = true;
 }
 
 void	mlx(void)
 {
-	get_game()->on_change = false;
-	get_game()->mlx = mlx_init(WIDTH, HEIGHT, "game", true);
-	// mlx_key_hook(get_game()->mlx, bind, get_game()->mlx);
-	mlx_loop_hook(get_game()->mlx, con, get_game()->mlx);
+	t_game	*game;
+
+	game = get_game();
+	game->on_change = false;
+	game->mlx = mlx_init(WIDTH, HEIGHT, "game", true);
+	// mlx_key_hook(game->mlx, bind, game->mlx);
+	mlx_loop_hook(game->mlx, con, game->mlx);
 	pnf("hello\n");
-	mlx_loop(get_game()->mlx);
-	mlx_terminate(get_game()->mlx);
+	mlx_loop(game->mlx);
+	mlx_terminate(game->mlx);
 }
