@@ -6,14 +6,11 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 23:14:40 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/07 13:59:55 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/07 16:50:28 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
-#include "drawline.h"
-#include "game.h"
-#include <math.h>
+#include "ray.h"
 
 static bool	in_wall(float x, float y, t_player *temp)
 {
@@ -88,22 +85,22 @@ void	put_player(mlx_texture_t *text, t_player player, size_t color)
 	t_point		front;
 	t_point		left;
 	t_point		right;
-	float		redian;
+	float		rad;
 
 	padding = get_game()->player_size;
-	redian = player.dir * PI / 180;
+	rad = player.dir * PI / 180;
 	front.color = color;
 	front.outcode = 0;
-	front.px = player.x + padding * cos(redian);
-	front.py = player.y + padding * sin(redian);
+	front.px = player.x + padding * cos(rad);
+	front.py = player.y + padding * sin(rad);
 	left.color = color;
 	left.outcode = 0;
-	left.px = player.x + (padding / 2) * cos(redian - PI / 1.5);
-	left.py = player.y + (padding / 2) * sin(redian - PI / 1.5);
+	left.px = player.x + (padding / 2) * cos(rad - PI / 1.5);
+	left.py = player.y + (padding / 2) * sin(rad - PI / 1.5);
 	right.color = color;
 	right.outcode = 0;
-	right.px = player.x + (padding / 2) * cos(redian + PI / 1.5);
-	right.py = player.y + (padding / 2) * sin(redian + PI / 1.5);
+	right.px = player.x + (padding / 2) * cos(rad + PI / 1.5);
+	right.py = player.y + (padding / 2) * sin(rad + PI / 1.5);
 	bresenham(text, front, left);
 	bresenham(text, front, right);
 	bresenham(text, left, right);

@@ -16,7 +16,7 @@ MLX_HEADER	= $(MLX_DIR)/include/MLX42
 SRC			= $(addprefix srcs/, $(FILE))
 OBJ			= $(SRC:.c=.o)
 #------------[ROOT_FILES]
-FILE		= $(MAIN) $(UTIL) $(PARSER) $(DISPLAY)
+FILE		= $(MAIN) $(UTIL) $(PARSER) $(DISPLAY) $(RAY)
 HEADER		= -I ./include -I $(LIBFT_HEADER) -I $(MLX_HEADER)
 LIB			= $(LIBFT_FILE) $(MLX_FILE)
 #------------[SUBFILES]
@@ -38,6 +38,10 @@ PARSER_FILE		= queue tile player main
 DISPLAY				= $(addprefix $(DISPLAY_PATH)/, $(addsuffix .c, $(DISPLAY_FILE)))
 DISPLAY_PATH		= mlx
 DISPLAY_FILE		= mlxinit texture cohen drawline print_map key_bind player
+#------------[RAY]
+RAY				= $(addprefix $(RAY_PATH)/, $(addsuffix .c, $(RAY_FILE)))
+RAY_PATH		= ray
+RAY_FILE		= ray
 #------------[PROCESS]
 all: lib $(NAME)
 $(NAME): $(OBJ)

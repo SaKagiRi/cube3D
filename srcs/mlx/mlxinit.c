@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:48:12 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/07 12:28:39 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/07 16:51:03 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "cube.h"
 #include "game.h"
 #include "map.h"
+#include "ray.h"
 
 void	con(void *mlx)
 {

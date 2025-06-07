@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 01:56:42 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/06 23:22:02 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/07 16:51:32 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "cube.h"
 #include "game.h"
 #include "map.h"
+#include "ray.h"
 #include "drawline.h"
 #include <math.h>
 
@@ -67,6 +68,7 @@ void	print_map(mlx_t *mlx, mlx_texture_t *text)
 		i++;
 	}
 	put_player(text, get_game()->player, 0xFF0000);
+	putray(text);
 	img = mlx_texture_to_image(get_game()->mlx, text);
 	mlx_image_to_window(get_game()->mlx, img, 0, 0);
 	get_game()->img = img;
