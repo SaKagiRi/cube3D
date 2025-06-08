@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:48:12 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/08 01:48:49 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/08 17:46:10 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 void	con(void *mlx)
 {
 	// mlx_image_t		*img;
-	mlx_texture_t	*minimap;
 	t_game			*game;
 
 	// (void)mlx;
@@ -27,12 +26,13 @@ void	con(void *mlx)
 	bind(mlx);
 	if (game->on_change)
 		return ;
-	minimap = new_texture(MINI_WIDTH, MINI_HEIGHT, 0x000000);
-	print_map(mlx, minimap);
+	print_map(mlx, game->minimap_t);
 	// img = mlx_texture_to_image(mlx, text);
 	// mlx_image_to_window(mlx, img, 0, 0);
 	// mlx_delete_image(mlx, img);
-	mlx_delete_texture(minimap);
+	// mlx_delete_texture(minimap);
+	fill_background(game->game_t, 0x000000);
+	fill_background(game->minimap_t, 0x000000);
 	game->on_change = true;
 }
 
@@ -41,8 +41,10 @@ void	mlx(void)
 	t_game	*game;
 
 	game = get_game();
-	get_game()->minimap.x =  (int)(MINI_WIDTH / 2) -game->player.x;
-	get_game()->minimap.y = (int)(MINI_HEIGHT / 2) - game->player.y;
+	game->minimap.x =  (int)(MINI_WIDTH / 2) -game->player.x;
+	game->minimap.y = (int)(MINI_HEIGHT / 2) - game->player.y;
+	game->minimap_t = new_texture(WIDTH, HEIGHT, 0x000000);
+	game->game_t = new_texture(WIDTH, HEIGHT, 0x000000);
 	game->on_change = false;
 	game->mlx = mlx_init(WIDTH, HEIGHT, "game", true);
 	// mlx_key_hook(game->mlx, bind, game->mlx);

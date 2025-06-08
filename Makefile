@@ -37,7 +37,7 @@ PARSER_FILE		= queue tile player main
 #------------[DISPLAY]
 DISPLAY				= $(addprefix $(DISPLAY_PATH)/, $(addsuffix .c, $(DISPLAY_FILE)))
 DISPLAY_PATH		= mlx
-DISPLAY_FILE		= mlxinit texture cohen drawline print_map key_bind player
+DISPLAY_FILE		= mlxinit texture cohen drawline print_map key_bind player print_game
 #------------[RAY]
 RAY				= $(addprefix $(RAY_PATH)/, $(addsuffix .c, $(RAY_FILE)))
 RAY_PATH		= ray

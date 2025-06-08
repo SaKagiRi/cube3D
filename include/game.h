@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:26:31 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/08 01:47:04 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/08 17:31:14 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ typedef struct s_player
 typedef struct s_game
 {
 	mlx_t			*mlx;
-	mlx_image_t		*img;
+	mlx_image_t		*minimap_i;
+	mlx_texture_t	*minimap_t;
+	mlx_image_t		*game_i;
+	mlx_texture_t	*game_t;
 	t_player	player;
 	t_player	minimap;
 	t_map		map;
