@@ -6,17 +6,12 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 01:56:42 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/08 17:48:02 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/10 01:40:23 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MLX42.h"
 #include "cube.h"
-#include "game.h"
-#include "map.h"
-#include "ray.h"
-#include "drawline.h"
-#include <math.h>
 
 void	put_box(mlx_texture_t *text, int x, int y, size_t color)
 {

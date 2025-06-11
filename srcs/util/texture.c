@@ -6,11 +6,11 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 13:27:35 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/05 13:38:13 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/10 05:12:27 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "MLX42.h"
 #include <stddef.h>
 #include <stdlib.h>
 

@@ -6,16 +6,16 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 01:25:07 by kawaii            #+#    #+#             */
-/*   Updated: 2025/06/05 16:04:03 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/10 02:46:31 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-static int	valid_str(char *str, unsigned int *col)
+static int	valid_str(char *str, int *col)
 {
-	unsigned int	len;
-	unsigned int	tmp;
+	int	len;
+	int	tmp;
 
 	len = 1;
 	tmp = 0;

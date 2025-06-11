@@ -6,14 +6,12 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 17:34:39 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/06 23:15:12 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/10 01:39:58 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MLX42.h"
 #include "cube.h"
-#include "game.h"
-#include "map.h"
 #include <math.h>
 
 

@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 01:58:12 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/06 02:08:54 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/10 01:36:11 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static int	border_bound(t_point *ori, t_point *end)
 	return (1);
 }
 
-void	bresenham(mlx_texture_t *text, t_point start, t_point stop)
+void	drawline(mlx_texture_t *text, t_point start, t_point stop)
 {
 	cohen(&start, &stop);
 	if (!border_bound(&start, &stop))

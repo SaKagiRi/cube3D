@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   drawline.h                                         :+:      :+:    :+:   */
+/*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/06 02:00:04 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/10 02:52:55 by knakto           ###   ########.fr       */
+/*   Created: 2025/06/10 02:22:00 by knakto            #+#    #+#             */
+/*   Updated: 2025/06/11 15:56:56 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DRAWLINE_H
-# define DRAWLINE_H
+#ifndef MAP_H
+# define MAP_H
 
-# include "MLX42.h"
+# include "cube.h"
+# include "../ray/ray.h"
 
-typedef struct s_point
-{
-	long		color;
-	float		px;
-	float		py;
-	char		outcode;
-}	t_point;
-
-void	cohen(t_point *s1, t_point *s2);
-void	drawline(mlx_texture_t *text, t_point start, t_point stop);
+void	put_map(t_game *game);
+void	put_player(mlx_texture_t *text, t_player player, size_t color);
+void	put_game(t_game *game);
 
 #endif

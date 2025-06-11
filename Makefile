@@ -16,9 +16,9 @@ MLX_HEADER	= $(MLX_DIR)/include/MLX42
 SRC			= $(addprefix srcs/, $(FILE))
 OBJ			= $(SRC:.c=.o)
 #------------[ROOT_FILES]
-FILE		= $(MAIN) $(UTIL) $(PARSER) $(DISPLAY) $(RAY)
-HEADER		= -I ./include -I $(LIBFT_HEADER) -I $(MLX_HEADER)
+FILE		= $(MAIN) $(UTIL) $(PARSER) $(RAY) $(RENDER) $(GAME)
 LIB			= $(LIBFT_FILE) $(MLX_FILE)
+HEADER		= -I./include -I$(LIBFT_HEADER) -I$(MLX_HEADER)
 #------------[SUBFILES]
 INC_FILE	= cube map game
 INC			= $(addprefix include/, $(addsuffix .h, $(INC_FILE)))
@@ -29,35 +29,37 @@ MAIN_FILE		= cube hook
 #------------[UTIL]
 UTIL			= $(addprefix $(UTIL_PATH)/, $(addsuffix .c, $(UTIL_FILE)))
 UTIL_PATH		= util
-UTIL_FILE		= get_game in walloc ft_exit# dalloc
+UTIL_FILE		= get_game in walloc ft_exit drawline cohen texture
 #------------[PARSER]
 PARSER			= $(addprefix $(PARSER_PATH)/parser_, $(addsuffix .c, $(PARSER_FILE)))
 PARSER_PATH		= parser
 PARSER_FILE		= queue tile player main
-#------------[DISPLAY]
-DISPLAY				= $(addprefix $(DISPLAY_PATH)/, $(addsuffix .c, $(DISPLAY_FILE)))
-DISPLAY_PATH		= mlx
-DISPLAY_FILE		= mlxinit texture cohen drawline print_map key_bind player print_game
+#------------[RENDER]
+RENDER				= $(addprefix $(RENDER_PATH)/, $(addsuffix .c, $(RENDER_FILE)))
+RENDER_PATH		= render
+RENDER_FILE		= mlx keybind hook_control
+#------------[GAME]
+GAME				= $(addprefix $(GAME_PATH)/, $(addsuffix .c, $(GAME_FILE)))
+GAME_PATH		= game
+GAME_FILE		= map_topdown player game
 #------------[RAY]
 RAY				= $(addprefix $(RAY_PATH)/, $(addsuffix .c, $(RAY_FILE)))
 RAY_PATH		= ray
 RAY_FILE		= ray
 #------------[PROCESS]
 all: lib $(NAME)
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) | $(BUILD_DIR)
 		@$(CC) $(CFLAGS) $(OBJ) $(LIB) $(HEADER) -o $@
 		@printf "\033[38;5;46m\033[1m⟪ Complete ⟫\033[0m\n"
-%.o: %.c Makefile $(INC)
+%.o: %.c Makefile
 	@printf "\033[38;5;226;1m"
 	$(CC) $(CFLAGS) -c $< -o $@ $(HEADER)
 	@printf "\033[1A\033[2K"
 lib:
 	@make -C $(LIBFT_DIR)
-	@cmake $(MLX_DIR) -B $(MLX_DIR)/build && make -C $(MLX_DIR)/build -j4
 clean:
 	@rm -rf $(OBJ)
 	@make clean -C $(LIBFT_DIR)
-	@rm -rf $(MLX_DIR)/build
 fclean: clean
 	@rm -rf $(NAME)
 	@make fclean -C $(LIBFT_DIR)

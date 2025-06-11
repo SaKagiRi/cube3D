@@ -6,15 +6,12 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:37:04 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/09 01:36:46 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/10 01:40:14 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MLX42.h"
-#include "game.h"
-#include "drawline.h"
-#include "map.h"
-#include "ray.h"
+#include "cube.h"
 
 // void	put_game(mlx_texture_t *text)
 // {
@@ -69,8 +66,8 @@ void	put_game(mlx_texture_t *text)
 
 	game = get_game();
 	float player_rad = game->player.dir * PI / 180.0f;
-	i = -150;
-	while (i < 150)
+	i = -115;
+	while (i < 115)
 	{
 		angle_offset = (i / 10.0f) * (PI / 180.0f); // degree to rad
 		ray_angle = player_rad + angle_offset;
@@ -80,13 +77,44 @@ void	put_game(mlx_texture_t *text)
 
 		dis *= cos(angle_offset); // fish-eye correction
 
-		if (dis <= 50)
+		if (dis < 49)
 		{
 			wallheight = (HEIGHT / dis) / 2;
-			bresenham(text,
-				(t_point){0xFF0000, mid_x + i, mid_y - wallheight, 0},
-				(t_point){0xFF0000, mid_x + i, mid_y + wallheight, 0});
+			if (check_dir(hit) == 1)
+			{
+				drawline(text,
+					(t_point){0xff0000, mid_x + i * 5, mid_y - wallheight * 5, 0},
+					(t_point){0xff0000, mid_x + i * 5, mid_y + wallheight * 5, 0});
+			}
+			else if (check_dir(hit) == 2)
+			{
+				drawline(text,
+					(t_point){0x00FF00, mid_x + i * 5, mid_y - wallheight * 5, 0},
+					(t_point){0x00FF00, mid_x + i * 5, mid_y + wallheight * 5, 0});
+			}
+			else if (check_dir(hit) == 3)
+			{
+				drawline(text,
+					(t_point){0x0000ff, mid_x + i * 5, mid_y - wallheight * 5, 0},
+					(t_point){0x0000ff, mid_x + i * 5, mid_y + wallheight * 5, 0});
+			}
+			else if (check_dir(hit) == 4)
+			{
+				drawline(text,
+					(t_point){0xf00f00, mid_x + i * 5, mid_y - wallheight * 5, 0},
+					(t_point){0xf00f00, mid_x + i * 5, mid_y + wallheight * 5, 0});
+			}
+			else
+			{
+				drawline(text,
+					(t_point){0xFFFFFF, mid_x + i * 5, mid_y - wallheight * 5, 0},
+					(t_point){0xFFFFFF, mid_x + i * 5, mid_y + wallheight * 5, 0});
+			}
 		}
+		else
+			drawline(text,
+				(t_point){0x333333, mid_x + i * 5, mid_y - wallheight * 5, 0},
+				(t_point){0x333333, mid_x + i * 5, mid_y + wallheight * 5, 0});
 		i++;
 	}
 }

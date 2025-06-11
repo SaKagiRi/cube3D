@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 03:29:11 by kawaii            #+#    #+#             */
-/*   Updated: 2025/06/06 14:40:52 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/10 02:46:45 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	end_tile(t_tile *tile)
 static int	init_tile(t_map *map)
 {
 	size_t			size;
-	unsigned int	i;
+	int	i;
 
 	i = 0;
 	size = sizeof(t_tile *) * (map->row + 1);

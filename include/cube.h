@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:29 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/08 17:25:16 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/10 02:52:35 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,6 @@ t_game	*get_game(void);
 
 void	keyhook(void *arg);
 
-void	print_map(mlx_t *mlx, mlx_texture_t *text);
-void	bind(void *mlx);
-
 t_color	new_color(int hex);
 int		get_rgba(int r, int g, int b, int a);
 int		get_r(int rgba);
@@ -60,10 +57,5 @@ int		get_b(int rgba);
 int		get_a(int rgba);
 
 void	ft_exit(int n);
-
-void	player_walk(mlx_t *mlx);
-void	put_player(mlx_texture_t *text, t_player player, size_t color);
-
-void	put_game(mlx_texture_t *text);
 
 #endif

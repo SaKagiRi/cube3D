@@ -6,15 +6,12 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:48:12 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/08 17:46:10 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/10 01:40:01 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MLX42.h"
 #include "cube.h"
-#include "game.h"
-#include "map.h"
-#include "ray.h"
 
 void	con(void *mlx)
 {
