@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 02:02:17 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/10 19:24:02 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/13 05:01:18 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static void	inti(t_game *game)
 {
 	game->minimap.x = (int)(MINI_WIDTH / 2) - game->player.x;
 	game->minimap.y = (int)(MINI_HEIGHT / 2) - game->player.y;
-	game->player.outcode = 0;
 	game->player.dir -= 90;
 	if (game->player.dir < 0)
 		game->player.dir = 360 + game->player.dir;

@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 02:04:18 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/11 18:42:53 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/13 04:43:33 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,5 @@ void	hook(void *data)
 		return ;
 	put_map(game);
 	put_player(game->game_t, game->player, 0x000000FF);
-	// put_game(game);
 	render(game);
 }

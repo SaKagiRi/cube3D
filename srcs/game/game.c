@@ -6,60 +6,13 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 01:23:44 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/11 18:33:34 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/13 05:02:04 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 #include "drawline.h"
 #include "map.h"
-
-// void	put_game(t_game *game)
-// {
-// 	t_vec2	hit;
-// 	// int		dir;
-// 	float	x;
-// 	float	y;
-// 	t_player	mini;
-//
-// 	// dir = findhit(&hit, game->player, game->player.dir);
-// 	hit = find_hit(game->player.dir, game->player.x, game->player.y);
-// 	x = game->player.x;
-// 	y = game->player.y;
-// 	mini = game->minimap;
-// 	drawline(game->game_t, (t_point){0xFF0000, x + mini.x, y + mini.y, 0}, (t_point){0xFF0000, hit.x + mini.x, hit.y + mini.y, 0});
-// 	// pnf("%d\n", dir);
-// 	// else if (dir == 2)
-// 		// drawline(game->game_t, (t_point){0x0000FF, x + mini.x, y + mini.y, 0}, (t_point){0x0000FF, hit.x + mini.x, hit.y + mini.y, 0});
-// }
-
-// void	put_game(t_game *game)
-// {
-// 	float	i;
-// 	float	h;
-// 	float	s;
-// 	t_player player;
-// 	t_point	start;
-// 	t_point	stop;
-//
-// 	i = -WIDTH;
-// 	player = game->player;
-// 	while (i < WIDTH)
-// 	{
-// 		h = (32 / distance(player, find_hit(player.dir, player.x, player.y), i)) *415;
-// 		s = ((float)HEIGHT / 2) - (h / 2);
-// 		start.color = 0xFFFFFF;
-// 		start.px = ((float)WIDTH / 2) + (i / 2);
-// 		start.py = s;
-// 		start.outcode = 0;
-// 		stop.color = 0xFFFFFF;
-// 		stop.px = ((float)WIDTH / 2) + (i / 2);
-// 		stop.py = h;
-// 		stop.outcode = 0;
-// 		drawline(game->game_t, start, stop);
-// 		i++;
-// 	}
-// }
 
 void	put_games(t_game *game)
 {
