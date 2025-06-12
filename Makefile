@@ -35,9 +35,9 @@ PARSER			= $(addprefix $(PARSER_PATH)/parser_, $(addsuffix .c, $(PARSER_FILE)))
 PARSER_PATH		= parser
 PARSER_FILE		= queue tile player main
 #------------[RENDER]
-RENDER				= $(addprefix $(RENDER_PATH)/, $(addsuffix .c, $(RENDER_FILE)))
+RENDER			= $(addprefix $(RENDER_PATH)/, $(addsuffix .c, $(RENDER_FILE)))
 RENDER_PATH		= render
-RENDER_FILE		= mlx keybind hook_control
+RENDER_FILE		= mlx keybind hook_control walk swing
 #------------[GAME]
 GAME				= $(addprefix $(GAME_PATH)/, $(addsuffix .c, $(GAME_FILE)))
 GAME_PATH		= game

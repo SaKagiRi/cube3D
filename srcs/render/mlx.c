@@ -6,10 +6,11 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 02:02:17 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/13 05:01:18 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/13 05:09:36 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "MLX42.h"
 #include "render.h"
 
 static void	inti(t_game *game)
@@ -31,6 +32,7 @@ void	mlx(void)
 	game = get_game();
 	inti(game);
 	mlx_loop_hook(game->mlx, hook, game);
+	mlx_key_hook(game->mlx, key_hook, game);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);
 }

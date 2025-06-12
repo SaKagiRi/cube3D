@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 15:46:27 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/11 18:16:49 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/13 05:45:34 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,23 @@
 # define RAY_H
 
 # include "cube.h"
+
+typedef enum e_dir
+{
+	NORTH,
+	EAST,
+	WEST,
+	SOUTH
+}	t_dir;
+
+typedef struct s_ray
+{
+	t_vec2		origin;
+	t_vec2		hit;
+	float		dir;
+	double		dis;
+	int			side;
+}	t_ray;
 
 // int	findhit(t_vec2 *hit, t_player player, float ray_angle);
 t_vec2	find_hit(float ray_angle, float x, float y);
