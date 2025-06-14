@@ -29,11 +29,11 @@ MAIN_FILE		= cube hook
 #------------[UTIL]
 UTIL			= $(addprefix $(UTIL_PATH)/, $(addsuffix .c, $(UTIL_FILE)))
 UTIL_PATH		= util
-UTIL_FILE		= get_game in walloc ft_exit drawline cohen texture
+UTIL_FILE		= get_game in all_in walloc ft_exit drawline cohen texture color_get color_set
 #------------[PARSER]
 PARSER			= $(addprefix $(PARSER_PATH)/parser_, $(addsuffix .c, $(PARSER_FILE)))
 PARSER_PATH		= parser
-PARSER_FILE		= queue tile player main flood
+PARSER_FILE		= attr queue tile player main flood
 #------------[RENDER]
 RENDER			= $(addprefix $(RENDER_PATH)/, $(addsuffix .c, $(RENDER_FILE)))
 RENDER_PATH		= render

@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:26:31 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/14 16:22:31 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/15 04:11:52 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,18 @@ typedef enum e_err
 	MEM_ERR,
 	ARG_ERR,
 	FILE_ERR,
+	ATTR_ERR,
 	MAP_ERR,
 	WALL_ERR,
 	CHARAC_ERR,
 	OVR_LM
 }	t_err;
+
+typedef enum e_rmode
+{
+	ATTR_M,
+	MAP_M
+}	t_rmode;
 
 /**
  * @brief List storing content raw string read from map
@@ -127,10 +134,11 @@ typedef union u_color
 
 typedef struct s_text
 {
-	mlx_texture_t	n_txt;
-	mlx_texture_t	e_txt;
-	mlx_texture_t	s_txt;
-	mlx_texture_t	w_txt;
+	int				set;
+	mlx_texture_t	*n_txt;
+	mlx_texture_t	*e_txt;
+	mlx_texture_t	*s_txt;
+	mlx_texture_t	*w_txt;
 	t_color			f_color;
 	t_color			c_color;
 }	t_text;
@@ -152,9 +160,11 @@ typedef struct s_text
  */
 typedef struct s_map
 {
+	t_rmode			mode;
 	int				map_fd;
 	int				col;
 	int				row;
+	char			*buf;
 	t_mapvec		vecmap;
 	t_tile			**map;
 }	t_map;

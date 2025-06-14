@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color_set.c                                        :+:      :+:    :+:   */
+/*   all_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 22:15:37 by kawaii            #+#    #+#             */
-/*   Updated: 2025/06/15 03:13:55 by kawaii           ###   ########.fr       */
+/*   Created: 2025/06/15 03:17:34 by kawaii            #+#    #+#             */
+/*   Updated: 2025/06/15 03:52:53 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-#include "sys/types.h"
 
-t_color	new_color_hex(int hex)
+int	all_in(char *str, char *set)
 {
-	t_color	c;
-
-	c.rgb_hex = hex;
-	return (c);
-}
-
-t_color	new_color_rgba(u_char r, u_char g, u_char b, u_char a)
-{
-	t_color	c;
-
-	c.r = r;
-	c.g = g;
-	c.b = b;
-	c.a = a;
-	return (c);
+	if (!str || !set)
+		return (0);
+	while (*str != '\0')
+	{
+		if (!in(*str, set))
+			return (0);
+		str++;
+	}
+	return (1);
 }

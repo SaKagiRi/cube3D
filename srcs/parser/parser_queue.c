@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 01:25:07 by kawaii            #+#    #+#             */
-/*   Updated: 2025/06/14 09:59:45 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/15 05:08:40 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,22 +78,20 @@ void	clear_list(t_list *row)
 void	get_queue(t_map *map, int fd)
 {
 	t_game	*game;
-	char	*buf;
 	void	*tmp;
 
 	game = get_game();
-	buf = get_next_line(fd);
-	while (buf != NULL)
+	while (map->buf != NULL)
 	{
-		tmp = buf;
-		buf = ft_strtrim(buf, "\n");
+		tmp = map->buf;
+		map->buf = ft_strtrim(map->buf, "\n");
 		free(tmp);
-		if (!valid_str(buf, &map->col))
+		if (!valid_str(map->buf, &map->col))
 			game->err = MAP_ERR;
-		add_to_queue(buf, &map->vecmap);
+		add_to_queue(map->buf, &map->vecmap);
 		if (game->err == MEM_ERR)
 			return ;
-		buf = get_next_line(fd);
+		map->buf = get_next_line(fd);
 		game->map.row++;
 	}
 }

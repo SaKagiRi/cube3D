@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:18:16 by kawaii            #+#    #+#             */
-/*   Updated: 2025/06/14 16:28:28 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/15 05:12:32 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,25 @@ static int	init_file(int argc, char **argv, t_game *game)
 	if (game->map.map_fd < 0)
 		game->err = FILE_ERR;
 	return (game->err);
+}
+
+static void	get_attr(t_game *game)
+{
+	game->text.set = 0;
+	game->text.n_txt = NULL;
+	game->text.e_txt = NULL;
+	game->text.w_txt = NULL;
+	game->text.s_txt = NULL;
+	game->text.c_color = new_color_hex(0x0);
+	game->text.f_color = new_color_hex(0x0);
+	read_attr(game, &game->map, game->map.map_fd);
+	if (game->text.set != 6 || game->err == ATTR_ERR)
+	{
+		clear_texture(&game->text);
+		if (game->map.buf != NULL)
+			clear_get_next_line(&game->map, game->map.map_fd);
+		ft_exit(1);
+	}
 }
 
 static void	get_content(t_game *game)
@@ -62,6 +81,8 @@ void	parser(int argc, char **argv)
 	game = get_game();
 	if (init_file(argc, argv, game) == FILE_ERR)
 		ft_exit(1);
+	game->map.mode = ATTR_M;
+	get_attr(game);
 	get_content(game);
 	get_tile(game);
 	flood_fill(game->map.map, game, (int)(game->player.y / SCALE), \
