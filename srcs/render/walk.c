@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 06:00:11 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/13 06:03:50 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/14 13:59:16 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	walk(t_game *game, float dir)
 	game->player.y = next.y;
 }
 
-static bool	key(int key)
+bool	key(int key)
 {
 	return (mlx_is_key_down(get_game()->mlx, key));
 }
@@ -65,21 +65,21 @@ static bool	key(int key)
 bool	bindwalk(t_game *game)
 {
 	if (key(MLX_KEY_W) && key(MLX_KEY_D))
-		walk(game, game->player.dir + 125);
+		walk(game, game->player.dir_x + 125);
 	else if (key(MLX_KEY_W) && key(MLX_KEY_A))
-		walk(game, game->player.dir + 45);
+		walk(game, game->player.dir_x + 45);
 	else if (key(MLX_KEY_S) && key(MLX_KEY_D))
-		walk(game, game->player.dir + 225);
+		walk(game, game->player.dir_x + 225);
 	else if (key(MLX_KEY_S) && key(MLX_KEY_A))
-		walk(game, game->player.dir + 315);
+		walk(game, game->player.dir_x + 315);
 	else if (key(MLX_KEY_W) && !key(MLX_KEY_S))
-		walk(game, game->player.dir + 90);
+		walk(game, game->player.dir_x + 90);
 	else if (key(MLX_KEY_S) && !key(MLX_KEY_W))
-		walk(game, game->player.dir + 270);
+		walk(game, game->player.dir_x + 270);
 	else if (key(MLX_KEY_D) && !key(MLX_KEY_A))
-		walk(game, game->player.dir + 180);
+		walk(game, game->player.dir_x + 180);
 	else if (key(MLX_KEY_A) && !key(MLX_KEY_D))
-		walk(game, game->player.dir);
+		walk(game, game->player.dir_x);
 	else
 		return (0);
 	game->on_change = false;

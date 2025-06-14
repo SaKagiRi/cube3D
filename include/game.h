@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:26:31 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/13 04:58:35 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/14 14:27:42 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,9 @@ typedef struct s_mlx
  */
 typedef struct s_player
 {
-	float	dir;
+	float	dir_x;
+	float	dir_y;
+	float	z;
 	float	x;
 	float	y;
 	char	outcode;
@@ -190,6 +192,7 @@ typedef struct s_game
 	t_err		err;
 	bool		on_change;
 	bool		first_render;
+	bool		on_jump;
 	float		player_speed;
 	int			player_size;
 	int			move_cam_speed;

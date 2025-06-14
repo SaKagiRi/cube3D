@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 15:46:27 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/13 05:45:34 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/14 12:24:00 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,23 @@ typedef enum e_dir
 	SOUTH
 }	t_dir;
 
+typedef struct s_dist
+{
+	t_vec2	hit;
+	bool	ishit;
+	int		side;
+}	t_dist;
+
 typedef struct s_ray
 {
-	t_vec2		origin;
-	t_vec2		hit;
-	float		dir;
-	double		dis;
-	int			side;
+	bool	is_show;
+	t_dist	hit;
+	float	start_x;
+	t_point	point;
 }	t_ray;
 
-// int	findhit(t_vec2 *hit, t_player player, float ray_angle);
-t_vec2	find_hit(float ray_angle, float x, float y);
-float	distance(float px, float py, t_vec2 hit);
+t_ray	ray(float x, float y, float dir);
+t_dist	find_hit(float ray_angle, float x, float y);
+float	distance(float px, float py, t_vec2 hit, float dir);
 
 #endif
