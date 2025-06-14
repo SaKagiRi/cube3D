@@ -6,10 +6,11 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 06:00:11 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/14 14:37:00 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/14 16:32:05 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "game.h"
 #include "render.h"
 
 t_vec2	wallcheck(float x, float y, float dir, float speed)
@@ -45,8 +46,12 @@ static void	walk(t_game *game, float dir)
 {
 	t_vec2		next;
 	float		speed;
+	float		pdir;
 
 	speed = game->player_speed;
+	pdir = game->player.dir_x;
+	if (dir == pdir || dir == pdir + 180)
+		speed -= 0.12;
 	next = wallcheck(game->player.x, game->player.y, dir, speed);
 	if (next.x != game->player.x || next.y != game->player.y)
 	{

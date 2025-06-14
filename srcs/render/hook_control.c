@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 02:04:18 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/14 15:59:47 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/14 16:22:18 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,18 @@ void	jump(t_game *game)
 		jump = 0;
 	if (jump < 30 && !on_down)
 	{
-		jump++;
+		jump += 2;
 		game->player.z += (30.0f - jump) / 1.3;
 	}
 	else if (jump > -1)
 	{
 		game->player.z -= (30.0f - jump) / 1.3;
 		on_down = true;
-		jump--;
+		jump -= 2;
 	}
-	if (jump == -1)
+	if (jump <= -1)
 	{
+		jump = -1;
 		game->on_jump = false;
 		game->player.z = 0;
 		on_down = false;

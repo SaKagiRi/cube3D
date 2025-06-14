@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 02:07:49 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/14 13:58:11 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/14 16:18:02 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,15 @@ void	key_hook(mlx_key_data_t data, void	*in)
 	else if (data.key == MLX_KEY_LEFT_SHIFT && data.action == 0)
 		game->player_speed -= bonus_speed;
 	else if (data.key == MLX_KEY_LEFT_CONTROL && data.action == 1)
+	{
 		game->player_speed -= bonus_speed;
+		game->player.dir_y -= 50;
+	}
 	else if (data.key == MLX_KEY_LEFT_CONTROL && data.action == 0)
+	{
 		game->player_speed += bonus_speed;
+		game->player.dir_y = 0;
+	}
 	else if (data.key == MLX_KEY_SPACE && data.action == 1 && !game->on_jump)
 		game->on_jump = true;
 	else if (data.key == MLX_KEY_G && data.action == 1)

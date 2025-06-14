@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 01:23:44 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/14 16:24:08 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/14 16:31:53 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ void	put_fov(t_game *game)
 
 void	put_game(t_game *game)
 {
-	float	fov = 60;
+	float	fov = 45;
 	float		i;
 	t_player player;
 	float	h;
@@ -176,7 +176,7 @@ void	put_game(t_game *game)
 			continue ;
 		}
 		j = 0;
-		while (j < 5)
+		while (j < 4)
 		{
 			start.px = ((float)WIDTH / 2) + i * fov + j;
 			stop.px = ((float)WIDTH / 2) + i * fov + j;
