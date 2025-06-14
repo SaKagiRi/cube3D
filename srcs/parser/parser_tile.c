@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 03:29:11 by kawaii            #+#    #+#             */
-/*   Updated: 2025/06/14 13:43:17 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/15 05:33:08 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,6 @@ void	parse_tile(t_map *map)
 		cur = cur->next;
 		i++;
 	}
+	if (!map->p_init)
+		get_game()->err = CHARAC_ERR;
 }

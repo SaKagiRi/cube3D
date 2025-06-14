@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:18:16 by kawaii            #+#    #+#             */
-/*   Updated: 2025/06/15 05:12:32 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/15 05:32:12 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ static void	get_tile(t_game *game)
 	parse_tile(&game->map);
 	if (game->err != OK)
 	{
+		clear_texture(&game->text);
 		clear_list(game->map.vecmap.raw_map);
-		if (game->err == CHARAC_ERR)
-			ft_exit(1);
+		ft_exit(1);
 	}
 	clear_list(game->map.vecmap.raw_map);
 }
@@ -85,10 +85,17 @@ void	parser(int argc, char **argv)
 	get_attr(game);
 	get_content(game);
 	get_tile(game);
+	if (game->err != OK)
+	{
+		clear_texture(&game->text);
+		clear_tile(game->map.map, game->map.row);
+		ft_exit(1);
+	}
 	flood_fill(game->map.map, game, (int)(game->player.y / SCALE), \
 			(int)(game->player.x / SCALE));
 	if (game->err != OK)
 	{
+		clear_texture(&game->text);
 		clear_tile(game->map.map, game->map.row);
 		ft_exit(1);
 	}

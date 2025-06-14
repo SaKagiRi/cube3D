@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 11:45:04 by kawaii            #+#    #+#             */
-/*   Updated: 2025/06/14 14:36:06 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/15 05:30:37 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 void	init_player(char type, int x, int y)
 {
-	static int	called;
 	t_game		*game;
 
 	game = get_game();
-	if (called)
+	if (game->map.p_init)
 	{
 		game->err = CHARAC_ERR;
 		return ;
@@ -36,5 +35,5 @@ void	init_player(char type, int x, int y)
 		if (type == 'S')
 			game->player.dir_x = 180;
 	}
-	called++;
+	game->map.p_init = true;
 }

@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:01 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/15 05:13:51 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/15 05:19:23 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int argc, char **argv)
 	parser(argc, argv);
 	game = get_game();
 
-	mlx();
+	// mlx();
 
 	clear_tile(game->map.map, game->map.row);
 	clear_texture(&game->text);

@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:26:31 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/15 04:11:52 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/15 05:29:04 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,7 @@ typedef struct s_text
 typedef struct s_map
 {
 	t_rmode			mode;
+	bool			p_init;
 	int				map_fd;
 	int				col;
 	int				row;
