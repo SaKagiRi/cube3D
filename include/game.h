@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:26:31 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/14 14:27:42 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/14 15:20:20 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,6 +193,7 @@ typedef struct s_game
 	bool		on_change;
 	bool		first_render;
 	bool		on_jump;
+	float		mouse_sen;
 	float		player_speed;
 	int			player_size;
 	int			move_cam_speed;

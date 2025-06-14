@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 01:23:44 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/14 14:06:19 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/14 16:04:57 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,7 @@ void	put_game(t_game *game)
 	t_dist	hit;
 	float	step;
 	// float	rad;
+	int		j;
 
 	i = -(fov / 2);
 	player = game->player;
@@ -156,10 +157,10 @@ void	put_game(t_game *game)
 	while (i < fov / 2)
 	{	
 		// hit = fhit(player, i, game->scale, game);
-		printf("%f\n", i);
+		// printf("%f\n", i);
 		hit = find_hit(player.dir_x + i, player.x, player.y);
 		dist = distance(player.x, player.y, hit.hit, i);
-		h = (40 / dist) * (WIDTH / 2.0f);
+		h = (40 / dist) * (WIDTH / 3.1f);
 		ft_texture(game->game_t, player.x + game->minimap.x, player.y + game->minimap.y, 0x000000);
 		drawline(game->game_t, (t_point){0x0000FF, player.x + game->minimap.x, player.y + game->minimap.y, 0}, (t_point){0x0000FF, hit.hit.x + game->minimap.x, hit.hit.y + game->minimap.y, 0});
 		s = (HEIGHT - h) / 2;
@@ -174,9 +175,14 @@ void	put_game(t_game *game)
 			i += step;
 			continue ;
 		}
-		start.px = ((float)WIDTH / 2) + i * fov;
-		stop.px = ((float)WIDTH / 2) + i * fov;
-		drawline(game->game_t, start, stop);
+		j = 0;
+		while (j < 5)
+		{
+			start.px = ((float)WIDTH / 2) + i * fov + j;
+			stop.px = ((float)WIDTH / 2) + i * fov + j;
+			drawline(game->game_t, start, stop);
+			j++;
+		}
 		i += step;
 	}
 }
