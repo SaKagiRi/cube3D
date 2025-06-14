@@ -25,7 +25,7 @@ INC			= $(addprefix include/, $(addsuffix .h, $(INC_FILE)))
 #------------[MAIN]
 MAIN			= $(addprefix $(MAIN_PATH)/, $(addsuffix .c, $(MAIN_FILE)))
 MAIN_PATH		= main
-MAIN_FILE		= cube hook
+MAIN_FILE		= cube
 #------------[UTIL]
 UTIL			= $(addprefix $(UTIL_PATH)/, $(addsuffix .c, $(UTIL_FILE)))
 UTIL_PATH		= util
