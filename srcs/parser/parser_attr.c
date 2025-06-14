@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:15:32 by kawaii            #+#    #+#             */
-/*   Updated: 2025/06/15 05:11:17 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/15 05:46:31 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ static void	get_text(mlx_texture_t **text, char *path)
 
 static void	assign_text(t_text *text_con, char *line)
 {
+	static bool	f_set;
+	static bool	c_set;
+
 	if (!ft_strncmp("NO ", line, 3))
 		get_text(&text_con->n_txt, ft_strrchr(line, ' ') + 1);
 	else if (!ft_strncmp("EA ", line, 3))
@@ -63,10 +66,16 @@ static void	assign_text(t_text *text_con, char *line)
 		get_text(&text_con->w_txt, ft_strrchr(line, ' ') + 1);
 	else if (!ft_strncmp("SO ", line, 3))
 		get_text(&text_con->s_txt, ft_strrchr(line, ' ') + 1);
-	else if (!ft_strncmp("F ", line, 2))
+	else if (!ft_strncmp("F ", line, 2) && !f_set)
+	{
+		f_set = true;
 		get_color(&text_con->f_color, ft_strrchr(line, ' ') + 1);
-	else if (!ft_strncmp("C ", line, 2))
+	}
+	else if (!ft_strncmp("C ", line, 2) && !c_set)
+	{
+		c_set = true;
 		get_color(&text_con->c_color, ft_strrchr(line, ' ') + 1);
+	}
 	else
 		get_game()->err = ATTR_ERR;
 }

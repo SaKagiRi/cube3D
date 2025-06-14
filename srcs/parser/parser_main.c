@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:18:16 by kawaii            #+#    #+#             */
-/*   Updated: 2025/06/15 05:32:12 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/15 05:48:31 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static void	get_attr(t_game *game)
 	read_attr(game, &game->map, game->map.map_fd);
 	if (game->text.set != 6 || game->err == ATTR_ERR)
 	{
+		game->err = ATTR_ERR;
 		clear_texture(&game->text);
 		if (game->map.buf != NULL)
 			clear_get_next_line(&game->map, game->map.map_fd);
