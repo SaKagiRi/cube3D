@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:06:52 by kawaii            #+#    #+#             */
-/*   Updated: 2025/06/06 17:44:12 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/14 12:54:51 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static void	msg_set1(t_err error)
 	else if (error == OVR_LM \
 	|| 0)
 		ft_putendl_fd("Map size is over the limit.", 2);
+	else
+		ft_putendl_fd("Unexpected or Unrecord Error.", 2);
 }
 
 void	ft_exit(int n)

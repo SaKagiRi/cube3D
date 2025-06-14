@@ -6,27 +6,53 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:18:16 by kawaii            #+#    #+#             */
-/*   Updated: 2025/06/06 17:45:38 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/14 16:28:28 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-int	init_file(char *path)
+static int	init_file(int argc, char **argv, t_game *game)
 {
-	t_game	*game;
-
-	game = get_game();
-	if (ft_strlen(ft_strrchr(path, '.')) != 4 \
-		|| ft_strncmp(ft_strrchr(path, '.'), ".cub", 4))
+	if (argc != 2)
 	{
 		game->err = FILE_ERR;
 		ft_exit(1);
 	}
-	game->map.map_fd = open(path, O_RDONLY);
+	if (ft_strlen(ft_strrchr(argv[1], '.')) != 4 \
+		|| ft_strncmp(ft_strrchr(argv[1], '.'), ".cub", 4))
+	{
+		game->err = FILE_ERR;
+		ft_exit(1);
+	}
+	game->map.map_fd = open(argv[1], O_RDONLY);
 	if (game->map.map_fd < 0)
 		game->err = FILE_ERR;
 	return (game->err);
+}
+
+static void	get_content(t_game *game)
+{
+	get_queue(&game->map, game->map.map_fd);
+	if (game->map.col > LIMIT_MAP_SIZE || game->map.row > LIMIT_MAP_SIZE)
+		game->err = OVR_LM;
+	if (game->err != OK)
+	{
+		clear_list(game->map.vecmap.raw_map);
+		ft_exit(1);
+	}
+}
+
+static void	get_tile(t_game *game)
+{
+	parse_tile(&game->map);
+	if (game->err != OK)
+	{
+		clear_list(game->map.vecmap.raw_map);
+		if (game->err == CHARAC_ERR)
+			ft_exit(1);
+	}
+	clear_list(game->map.vecmap.raw_map);
 }
 
 void	parser(int argc, char **argv)
@@ -34,25 +60,15 @@ void	parser(int argc, char **argv)
 	t_game	*game;
 
 	game = get_game();
-	if (argc != 2)
-	{
-		game->err = FILE_ERR;
+	if (init_file(argc, argv, game) == FILE_ERR)
 		ft_exit(1);
-	}
-	if (init_file(argv[1]) == FILE_ERR)
-		ft_exit(1);
-	get_queue(&game->map, game->map.map_fd);
+	get_content(game);
+	get_tile(game);
+	flood_fill(game->map.map, game, (int)(game->player.y / SCALE), \
+			(int)(game->player.x / SCALE));
 	if (game->err != OK)
 	{
-		clear_list(game->map.vecmap.raw_map);
-		ft_exit(1);
-	}
-	parse_tile(&game->map);
-	if (game->err != OK)
-	{
-		clear_list(game->map.vecmap.raw_map);
-		if (game->err == CHARAC_ERR)
-			clear_tile(game->map.map, game->map.row);
+		clear_tile(game->map.map, game->map.row);
 		ft_exit(1);
 	}
 }

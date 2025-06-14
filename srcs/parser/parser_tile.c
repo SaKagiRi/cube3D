@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 03:29:11 by kawaii            #+#    #+#             */
-/*   Updated: 2025/06/10 02:46:45 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/14 13:43:17 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	clear_tile(t_tile **map, int row)
 {
-	static bool b = false;
-	int	i;
+	static bool	b = false;
+	int			i;
 
 	i = 0;
 	if (b)
@@ -28,15 +28,15 @@ void	clear_tile(t_tile **map, int row)
 
 static void	new_tile(t_tile *tile, char type, int x, int y)
 {
-	tile->x = (x + 1) * get_game()->scale;
-	tile->y = (y + 1) * get_game()->scale;
+	tile->x = (x + 1) * SCALE;
+	tile->y = (y + 1) * SCALE;
 	if (in(type, "NEWS"))
 	{
 		init_player(type, tile->x, tile->y);
-		tile->type = PATH;
+		tile->type = U_PATH;
 	}
 	else if (type == '0')
-		tile->type = PATH;
+		tile->type = U_PATH;
 	else if (type == '1')
 		tile->type = WALL;
 	else if (type == ' ')
@@ -50,8 +50,8 @@ static void	end_tile(t_tile *tile)
 
 static int	init_tile(t_map *map)
 {
-	size_t			size;
-	int	i;
+	size_t	size;
+	int		i;
 
 	i = 0;
 	size = sizeof(t_tile *) * (map->row + 1);

@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 01:25:07 by kawaii            #+#    #+#             */
-/*   Updated: 2025/06/10 02:46:31 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/14 09:59:45 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ void	get_queue(t_map *map, int fd)
 	{
 		tmp = buf;
 		buf = ft_strtrim(buf, "\n");
-		// if (!ft_strlen(buf))
 		free(tmp);
 		if (!valid_str(buf, &map->col))
 			game->err = MAP_ERR;

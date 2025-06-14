@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_topdown.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
+/*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 02:21:19 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/10 18:52:27 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/14 13:48:22 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	put_box(mlx_texture_t *text, int x, int y, size_t color)
 	int		i;
 	int		j;
 
-	scale = get_game()->scale;
+	scale = SCALE;
 	x -= scale;
 	y -= scale;
 	i = 0;

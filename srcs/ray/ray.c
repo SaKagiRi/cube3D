@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
+/*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 16:20:23 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/14 13:32:08 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/14 14:39:47 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		set_side(float hx, float hy, float rad)
 {
 	int		scale;
 
-	scale = get_game()->scale;
+	scale = SCALE;
 	// if (((int)hx % scale == 0 || (int)hx % scale == scale - 1) && ((int)hy % scale == 0 || (int)hy % scale == scale - 1))
 	// {
 	// 	rad = rad * 180 / M_PI;
@@ -72,7 +72,7 @@ t_dist	find_hit(float ray_angle, float x, float y)
 
 	r = 0;
 	map = get_game()->map.map;
-	scale = get_game()->scale;
+	scale = SCALE;
 	rad = ray_angle * PI / 180;
 	cur.x = x;
 	cur.y = y;

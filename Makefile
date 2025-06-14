@@ -33,7 +33,7 @@ UTIL_FILE		= get_game in walloc ft_exit drawline cohen texture
 #------------[PARSER]
 PARSER			= $(addprefix $(PARSER_PATH)/parser_, $(addsuffix .c, $(PARSER_FILE)))
 PARSER_PATH		= parser
-PARSER_FILE		= queue tile player main
+PARSER_FILE		= queue tile player main flood
 #------------[RENDER]
 RENDER			= $(addprefix $(RENDER_PATH)/, $(addsuffix .c, $(RENDER_FILE)))
 RENDER_PATH		= render

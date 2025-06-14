@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   walk.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
+/*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 06:00:11 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/14 13:59:16 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/14 14:37:00 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_vec2	wallcheck(float x, float y, float dir, float speed)
 
 	i = 0;
 	map = get_game()->map.map;
-	scale = get_game()->scale;
+	scale = SCALE;
 	rad = dir * PI / 180;
 	while (i < speed)
 	{

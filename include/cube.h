@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:29 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/10 02:52:35 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/14 11:05:55 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	get_queue(t_map *map, int fd);
 
 void	clear_tile(t_tile **map, int row);
 void	parse_tile(t_map *map);
+
+void	flood_fill(t_tile **tile, t_game *game, int y, int x);
 
 void	mlx(void);
 void	init_player(char type, int x, int y);

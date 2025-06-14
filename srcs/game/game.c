@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
+/*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 01:23:44 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/14 16:04:57 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/14 16:24:08 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void	set_ray_fov(t_game *game, t_ray ray[100])
 	{
 		ray[i].start_x = i * block;
 		ray[i].point.px = i * block;
-		ray[i].hit = fhit(game->player, i, game->scale, game);
+		ray[i].hit = fhit(game->player, i, SCALE, game);
 		ray[i].point.py = 0;
 		ray[i].point.color = 0xFFFFFF;
 		ray[i].point.outcode = 0;

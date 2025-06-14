@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
+/*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:26:31 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/14 15:20:20 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/14 16:22:31 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,15 @@
 #  define MINI_HEIGHT 150
 # endif
 
+# ifndef SCALE
+#  define SCALE 10
+# endif
+
 typedef enum e_type
 {
 	END,
 	EMPT,
+	U_PATH,
 	PATH,
 	WALL,
 }	t_type;
@@ -66,6 +71,7 @@ typedef enum e_err
 	ARG_ERR,
 	FILE_ERR,
 	MAP_ERR,
+	WALL_ERR,
 	CHARAC_ERR,
 	OVR_LM
 }	t_err;
