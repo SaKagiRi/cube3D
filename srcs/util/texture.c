@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
+/*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 13:27:35 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/10 05:12:27 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/16 04:00:48 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	ft_texture(mlx_texture_t *texture, float x, float y, size_t rgb)
 	if (x >= texture->width || y >= texture->height)
 		return (0);
 	position = ((int32_t)y * texture->width * 4) + ((int32_t)x * 4);
-	texture->pixels[position] = rgb >> 16 & 0xFF;
-	texture->pixels[position + 1] = rgb >> 8 & 0xFF;
-	texture->pixels[position + 2] = rgb & 0xFF;
+	texture->pixels[position] = rgb >> 24 & 0xFF;
+	texture->pixels[position + 1] = rgb >> 16 & 0xFF;
+	texture->pixels[position + 2] = rgb >> 8 & 0xFF;
 	texture->pixels[position + 3] = 0xFF;
 	return (1);
 }

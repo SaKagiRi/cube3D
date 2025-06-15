@@ -6,11 +6,18 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:15:32 by kawaii            #+#    #+#             */
-/*   Updated: 2025/06/16 03:15:22 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/16 03:29:09 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+
+static int	color_range(int n)
+{
+	if (n < 0 || n > 255)
+		get_game()->err = ATTR_ERR;
+	return (n);
+}
 
 static void	get_color(t_color *color, char *str)
 {
@@ -26,9 +33,9 @@ static void	get_color(t_color *color, char *str)
 		i++;
 	if (i == 3)
 	{
-		r = ft_atoi(option[0]);
-		g = ft_atoi(option[1]);
-		b = ft_atoi(option[2]);
+		r = color_range(ft_atoi(option[0]));
+		g = color_range(ft_atoi(option[1]));
+		b = color_range(ft_atoi(option[2]));
 		*color = new_color_rgba(r, g, b, 0xFF);
 		get_game()->text.set++;
 	}

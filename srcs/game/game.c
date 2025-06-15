@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 01:23:44 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/16 02:09:41 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/16 03:35:25 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ size_t	set_wall_color(t_dist hit)
 
 float get_rad(float ax, float ay, float bx, float by)
 {
-	return atan2(by - ay, bx - ax);
+ 	return atan2(by - ay, bx - ax);
 }
 
 void	put_smoke(t_game *game, float i, float fov)
@@ -261,7 +261,7 @@ void	put_game(t_game *game)
 	i = -(fov / 2);
 	player = game->player;
 	step = fov / WIDTH;
-	put_bg(game, 0x222222, 0xAAAAAA);
+	put_bg(game, game->text.c_color.rgb_hex, game->text.f_color.rgb_hex);
 	put_map(game);
 	while (i < fov / 2)
 	{	

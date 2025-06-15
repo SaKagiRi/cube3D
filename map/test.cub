@@ -1,8 +1,8 @@
 NO     ./texture/chibi_screenshot.png
 EA      ./texture/chibi_screenshot.png
 
-C   220,   100,  0   
-F    220,  100,  0   
+C   255,   255, 255   
+F    255,  0,  0
 SO    ./texture/chibi_screenshot.png
 WE   ./texture/chibi_screenshot.png
 
