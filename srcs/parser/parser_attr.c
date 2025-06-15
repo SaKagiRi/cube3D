@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:15:32 by kawaii            #+#    #+#             */
-/*   Updated: 2025/06/15 05:46:31 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/16 03:15:22 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	get_color(t_color *color, char *str)
 
 	i = 0;
 	option = ft_split(str, ',');
-	while (option[i] != NULL && all_in(option[i], "0123456789,"))
+	while (option[i] != NULL && all_in(option[i], " 0123456789,"))
 		i++;
 	if (i == 3)
 	{
@@ -69,12 +69,12 @@ static void	assign_text(t_text *text_con, char *line)
 	else if (!ft_strncmp("F ", line, 2) && !f_set)
 	{
 		f_set = true;
-		get_color(&text_con->f_color, ft_strrchr(line, ' ') + 1);
+		get_color(&text_con->f_color, ft_strchr(line, ' ') + 1);
 	}
 	else if (!ft_strncmp("C ", line, 2) && !c_set)
 	{
 		c_set = true;
-		get_color(&text_con->c_color, ft_strrchr(line, ' ') + 1);
+		get_color(&text_con->c_color, ft_strchr(line, ' ') + 1);
 	}
 	else
 		get_game()->err = ATTR_ERR;

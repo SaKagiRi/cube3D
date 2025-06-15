@@ -1,9 +1,10 @@
-NO ./texture/chibi_screenshot.png
+NO     ./texture/chibi_screenshot.png
 EA      ./texture/chibi_screenshot.png
 
-F    220,100,0
-SO ./texture/chibi_screenshot.png
-WE ./texture/chibi_screenshot.png
+C   220,   100,  0   
+F    220,  100,  0   
+SO    ./texture/chibi_screenshot.png
+WE   ./texture/chibi_screenshot.png
 
         1111111111111111111111111
         1000000000110000000000001
