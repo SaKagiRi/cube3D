@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 16:20:23 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/14 14:39:47 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/16 02:27:50 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "../../include/cube.h"
 #include "drawline.h"
 #include "cube.h"
+#include "game.h"
 #include <math.h>
 #include <stdlib.h>
 
@@ -84,16 +85,21 @@ t_dist	find_hit(float ray_angle, float x, float y)
 		temp.y = cur.y;
 		cur.x = x + r * cos(rad);
 		cur.y = y + r * sin(rad);
-		if ((int)cur.x % scale == 0 || (int)cur.x % scale == scale - 1 || (int)cur.y % scale == 0 || (int)cur.y % scale == scale - 1)
+		if ((int)cur.x % scale == 0 || (int)cur.y % scale == 0 || (int)cur.x % scale == scale - 1 || (int)cur.y % scale == scale - 1)
 		{
 			side = set_side(cur.x, cur.y, rad);
+			if (((int)cur.x % scale == 0 || (int)cur.x % scale == scale - 1) && ((int)cur.y % scale == 0 || (int)cur.y % scale == scale - 1))
+				side = -1;
+			// if ((int)cur.x % scale == 0 && (int)cur.y % scale == 0)
+			// 	side = -1;
 			if (map[(int)(cur.y / scale)][(int)(temp.x / scale)].type == WALL \
 	&& map[(int)(temp.y / scale)][(int)(cur.x / scale)].type == WALL)
-				return ((t_dist){temp, true, side});
+				return ((t_dist){temp, (t_vec2){(int)(temp.x / scale), (int)(cur.y / scale)}, side});
 			if (map[(int)(cur.y / scale)][(int)(cur.x / scale)].type == WALL)
-				return ((t_dist){cur, true, side});
+			// if (map[(int)((cur.y + sin(rad)) / scale)][(int)((cur.x + cos(rad)) / scale)].type == WALL)
+				return ((t_dist){cur, (t_vec2){(int)(cur.x / scale), (int)(cur.y / scale)}, side});
 		}
 		r += 0.3;
 	}
-	return ((t_dist){cur, false, -1});
+	return ((t_dist){cur, (t_vec2){0, 0}, -1});
 }

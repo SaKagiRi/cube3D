@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 02:04:18 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/14 16:22:18 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/16 02:09:25 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ void	jump(t_game *game)
 static bool	check_render(t_game *game)
 {
 	keybind(game);
-	jump(game);
-	mouse(game);
+	// jump(game);
+	// mouse(game);
 	if (game->on_change)
 		return (true);
 	mlx_delete_image(game->mlx, game->game_i);
@@ -106,8 +106,8 @@ void	hook(void *data)
 	game = (t_game *)data;
 	if (check_render(game))
 		return ;
+	// dda(game);
 	put_game(game);
-	put_map(game);
 	put_player(game->game_t, game->player, 0x000000FF);
 	put_cursor(game);
 	render(game);

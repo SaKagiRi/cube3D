@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 15:46:27 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/14 12:24:00 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/15 06:29:20 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef enum e_dir
 typedef struct s_dist
 {
 	t_vec2	hit;
-	bool	ishit;
+	t_vec2	block;
 	int		side;
 }	t_dist;
 

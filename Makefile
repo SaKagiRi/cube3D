@@ -41,7 +41,7 @@ RENDER_FILE		= mlx keybind hook_control walk swing
 #------------[GAME]
 GAME				= $(addprefix $(GAME_PATH)/, $(addsuffix .c, $(GAME_FILE)))
 GAME_PATH		= game
-GAME_FILE		= map_topdown player game
+GAME_FILE		= map_topdown player game dda
 #------------[RAY]
 RAY				= $(addprefix $(RAY_PATH)/, $(addsuffix .c, $(RAY_FILE)))
 RAY_PATH		= ray
