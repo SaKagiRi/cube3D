@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 02:05:00 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/14 13:57:59 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/17 21:21:09 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,9 @@ bool	bindwalk(t_game *game);
 bool	bindswing(t_game *game);
 void	allow_dir(t_game *game);
 bool	key(int key);
+
+void	mouse(t_game *game);
+
+void	jump(t_game *game);
 
 #endif

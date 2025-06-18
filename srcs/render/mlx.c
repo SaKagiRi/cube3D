@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 02:02:17 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/16 01:12:27 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/17 21:12:40 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static void	inti(t_game *game)
 	game->mlx = mlx_init(WIDTH, HEIGHT, "game", true);
 	game->game_t = new_texture(WIDTH, HEIGHT, 0x000000);
 	game->on_change = false;
-	// mlx_set_cursor_mode(game->mlx, MLX_MOUSE_DISABLED);
 }
 
 void	mlx(void)

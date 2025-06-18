@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 06:00:11 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/16 02:31:33 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/16 04:42:02 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	walk(t_game *game, float dir)
 	speed = game->player_speed;
 	pdir = game->player.dir_x;
 	if (dir == pdir || dir == pdir + 180)
-		speed -= 0.12;
+		speed -= 0.06;
 	next = wallcheck(game->player.x, game->player.y, dir, speed);
 	if (next.x != game->player.x || next.y != game->player.y)
 	{

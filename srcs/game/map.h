@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 02:22:00 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/16 00:52:06 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/17 20:52:50 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ void	put_fov(t_game *game);
 t_vec2	wallcheck(float x, float y, float dir, float speed);
 
 void	dda(t_game *game);
+void	set_background(t_game *game);
 
 #endif

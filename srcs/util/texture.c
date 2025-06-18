@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 13:27:35 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/16 04:00:48 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/19 03:13:43 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ int	ft_texture(mlx_texture_t *texture, float x, float y, size_t rgb)
 	size_t	position;
 
 	if (x < 0 || y < 0)
-		return (0);
+		return (-1);
 	if (x >= texture->width || y >= texture->height)
-		return (0);
+		return (-1);
 	position = ((int32_t)y * texture->width * 4) + ((int32_t)x * 4);
 	texture->pixels[position] = rgb >> 24 & 0xFF;
 	texture->pixels[position + 1] = rgb >> 16 & 0xFF;
 	texture->pixels[position + 2] = rgb >> 8 & 0xFF;
 	texture->pixels[position + 3] = 0xFF;
-	return (1);
+	return (0);
 }
 
 void	fill_background(mlx_texture_t *texture, size_t bg_color)
@@ -65,3 +65,21 @@ mlx_texture_t	*new_texture(size_t w, size_t h, size_t bg_color)
 	return (texture);
 }
 
+int	ft_texture_color(mlx_texture_t *texture, size_t x, size_t y, size_t *color)
+{
+	size_t	position;
+	size_t	r;
+	size_t	g;
+	size_t	b;
+	size_t	a;
+
+	if (x < 0 || y < 0 || x >= texture->width || y >= texture->height)
+		return (-1);
+	position = ((int32_t)y * texture->width * 4) + ((int32_t)x * 4);
+	r = texture->pixels[position + 0] & 0xFF;
+	g = texture->pixels[position + 1] & 0xFF;
+	b = texture->pixels[position + 2] & 0xFF;
+	a = texture->pixels[position + 3] & 0xFF;
+	*color = (r << 24 | g << 16 | b << 8 | a);
+	return (0);
+}

@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 02:21:19 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/14 13:48:22 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/17 20:32:47 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ void	put_box(mlx_texture_t *text, int x, int y, size_t color)
 		while (j < scale)
 		{
 			if (x + i < MINI_WIDTH && y + j < MINI_HEIGHT \
-&& ((i != scale - 1 && j != scale - 1) || color == 0xFFFFFF))
+&& ((i != scale - 1 && j != scale - 1) || color == 0xFFFFFFFF))
 				ft_texture(text, x + i, y + j, color);
+			else if (x + i < MINI_WIDTH && y + j < MINI_HEIGHT)
+				ft_texture(text, x + i, y + j, 0x000000FF);
 			j++;
 		}
 		i++;
@@ -54,9 +56,9 @@ void	put_map(t_game *game)
 		while (map[i][j].type != END)
 		{
 			if (map[i][j].type == WALL)
-				put_box(game->game_t, map[i][j].x + x, map[i][j].y + y, 0xAAAAAA);
+				put_box(game->game_t, map[i][j].x + x, map[i][j].y + y, 0xAAAAAAFF);
 			else if (map[i][j].type == PATH)
-				put_box(game->game_t, map[i][j].x + x, map[i][j].y + y, 0xFFFFFF);
+				put_box(game->game_t, map[i][j].x + x, map[i][j].y + y, 0xFFFFFFFF);
 			j++;
 		}
 		i++;

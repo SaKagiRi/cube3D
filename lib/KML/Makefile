@@ -34,7 +34,7 @@ CHARACTER_FILE	= ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.
 #------------[MEMORY]
 MEMORY			= $(addprefix $(MEMORY_PATH)/, $(MEMORY_FILE))
 MEMORY_PATH		= memory
-MEMORY_FILE		= ft_bzero.c ft_memset.c ft_memcpy.c ft_memchr.c ft_memcmp.c ft_calloc.c ft_memmove.c ft_malloc.c
+MEMORY_FILE		= ft_bzero.c ft_memset.c ft_memcpy.c ft_memchr.c ft_memcmp.c ft_calloc.c ft_memmove.c #ft_malloc.c
 #------------[PRINT]
 PRINT			= $(addprefix $(PRINT_PATH)/, $(PRINT_FILE))
 PRINT_PATH		= print

@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 16:20:23 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/16 02:27:50 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/16 17:58:47 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ t_dist	find_hit(float ray_angle, float x, float y)
 			// if (map[(int)((cur.y + sin(rad)) / scale)][(int)((cur.x + cos(rad)) / scale)].type == WALL)
 				return ((t_dist){cur, (t_vec2){(int)(cur.x / scale), (int)(cur.y / scale)}, side});
 		}
-		r += 0.3;
+		r += 0.1;
 	}
 	return ((t_dist){cur, (t_vec2){0, 0}, -1});
 }

@@ -3,7 +3,7 @@ NAME		= cube3D
 CC			= cc
 #------------[FLAGS]
 CFLAGS		= $(DEBUG_FLAGS) $(W_FLAGS)
-DEBUG_FLAGS	= -g3
+DEBUG_FLAGS	= -O2 #-g3
 W_FLAGS		= -Wall -Wextra -Werror -Ofast
 #------------[LIBRARY]
 LIBFT_DIR	= ./lib/KML
@@ -37,7 +37,7 @@ PARSER_FILE		= attr queue tile player main flood
 #------------[RENDER]
 RENDER			= $(addprefix $(RENDER_PATH)/, $(addsuffix .c, $(RENDER_FILE)))
 RENDER_PATH		= render
-RENDER_FILE		= mlx keybind hook_control walk swing
+RENDER_FILE		= mlx keybind hook_control walk swing mouse jump
 #------------[GAME]
 GAME				= $(addprefix $(GAME_PATH)/, $(addsuffix .c, $(GAME_FILE)))
 GAME_PATH		= game

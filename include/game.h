@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:26:31 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/16 03:59:44 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/19 03:12:53 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,6 +173,8 @@ typedef struct s_map
 mlx_texture_t	*new_texture(size_t w, size_t h, size_t bg_color);
 void			fill_background(mlx_texture_t *texture, size_t bg_color);
 int				ft_texture(mlx_texture_t *texture, float x, float y, size_t rgb);
+int	ft_texture_color(mlx_texture_t *texture, \
+size_t x, size_t y, size_t *color);
 
 typedef struct s_mlx
 {
@@ -210,6 +212,9 @@ typedef struct s_game
 	bool		on_change;
 	bool		first_render;
 	bool		on_jump;
+	bool		fog;
+	int			mouse;
+	float		fov;
 	float		mouse_sen;
 	float		player_speed;
 	int			player_size;
