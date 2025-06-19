@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 16:20:23 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/16 17:58:47 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/20 03:12:24 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,12 @@ t_dist	find_hit(float ray_angle, float x, float y)
 			// 	side = -1;
 			if (map[(int)(cur.y / scale)][(int)(temp.x / scale)].type == WALL \
 	&& map[(int)(temp.y / scale)][(int)(cur.x / scale)].type == WALL)
-				return ((t_dist){temp, (t_vec2){(int)(temp.x / scale), (int)(cur.y / scale)}, side});
+				return ((t_dist){temp, (t_vec2){(int)(temp.x / scale), (int)(cur.y / scale)}, side, 0});
 			if (map[(int)(cur.y / scale)][(int)(cur.x / scale)].type == WALL)
 			// if (map[(int)((cur.y + sin(rad)) / scale)][(int)((cur.x + cos(rad)) / scale)].type == WALL)
-				return ((t_dist){cur, (t_vec2){(int)(cur.x / scale), (int)(cur.y / scale)}, side});
+				return ((t_dist){cur, (t_vec2){(int)(cur.x / scale), (int)(cur.y / scale)}, side, 0});
 		}
 		r += 0.1;
 	}
-	return ((t_dist){cur, (t_vec2){0, 0}, -1});
+	return ((t_dist){cur, (t_vec2){0, 0}, -1, 0});
 }

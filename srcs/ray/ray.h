@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 15:46:27 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/15 06:29:20 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/20 03:12:08 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_dist
 	t_vec2	hit;
 	t_vec2	block;
 	int		side;
+	float	dist;
 }	t_dist;
 
 typedef struct s_ray

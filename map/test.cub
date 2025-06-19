@@ -1,8 +1,8 @@
 NO     ./texture/chibi_screenshot.png
 EA      ./texture/Bricks.png
 
-C   255,   255, 255   
-F    255,  0,  0
+C  60,   76, 92
+F    26,  26,  26
 SO    ./texture/Bricks.png
 WE   ./texture/chibi_screenshot.png
 

@@ -6,13 +6,15 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 01:23:44 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/19 03:57:53 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/20 03:16:29 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
+#include "MLX42.h"
 #include "cube.h"
 #include "drawline.h"
+#include "endian.h"
 #include "map.h"
 #include "unistd.h"
 
@@ -101,7 +103,7 @@ void	put_bg(t_game *game, size_t bg_top, size_t bg_down)
 		i++;
 	}
 }
-
+//
 int	get_block_side(float center_x, float center_y, float hit_x, float hit_y)
 {
 	float dx = hit_x - center_x;
@@ -136,13 +138,13 @@ int	set_side_wall(t_dist hit)
 
 	ft_texture(get_game()->game_t, center_x + get_game()->minimap.x, center_y + get_game()->minimap.y, 0xFF0000);
 	//
-	// if (hit.block.x == 0 && hit.block.y == 0)
-	// 	return (-1);
-	// center_x = (hit.block.x * SCALE) + (SCALE / 2.0f);
-	// center_y = (hit.block.y * SCALE) + (SCALE / 2.0f);
-	// // printf("cx:%f, cy:%f\n, hx:%f, hy:%f\n\n\n", center_x, center_y, hit.hit.x, hit.hit.y);
-	// return (get_block_side(center_x, center_y, hit.hit.x, hit.hit.y));
-	return (hit.side);
+	if (hit.block.x == 0 && hit.block.y == 0)
+		return (-1);
+	center_x = (hit.block.x * SCALE) + (SCALE / 2.0f);
+	center_y = (hit.block.y * SCALE) + (SCALE / 2.0f);
+	// printf("cx:%f, cy:%f\n, hx:%f, hy:%f\n\n\n", center_x, center_y, hit.hit.x, hit.hit.y);
+	return (get_block_side(center_x, center_y, hit.hit.x, hit.hit.y));
+	// return (hit.side);
 }
 
 // int		set_side_wall(float px, float py, float hx, float hy)
@@ -200,57 +202,122 @@ void	set_background(t_game *game)
 		put_bg(game, game->text.c_color.rgb_hex, game->text.f_color.rgb_hex);
 }
 
+mlx_texture_t	*get_side(t_game *game, int side)
+{
+	if (side == NORTH)
+		return (game->text.n_txt);
+	else if (side == WEST)
+		return (game->text.w_txt);
+	else if (side == EAST)
+		return (game->text.e_txt);
+	else if (side == SOUTH)
+		return (game->text.s_txt);
+	return (NULL);
+}
+
+mlx_texture_t	*get_rev_side(t_game *game, int side)
+{
+	if (side == SOUTH)
+		return (game->text.n_txt);
+	else if (side == EAST)
+		return (game->text.w_txt);
+	else if (side == WEST)
+		return (game->text.e_txt);
+	else if (side == NORTH)
+		return (game->text.s_txt);
+	return (NULL);
+}
+
+void	fill_texture_wall(t_game *game, t_vec2 start, float height, t_dist hit)
+{
+	t_vec2			gap;
+	t_vec2			step;
+	mlx_texture_t	*text;
+	int				i;
+	size_t			rgba;
+	
+	gap = get_gap(game, hit.hit);
+	step.x = gap.y / SCALE;
+	if (hit.side == NORTH || hit.side == SOUTH)
+		step.x = gap.x / SCALE;
+	text = get_side(game, hit.side);
+	if (!text)
+		return ;
+	if (step.x == 0)
+		step.x = 0.1;
+	step.y = (int)text->height / height;
+	i = 0;
+	while (i < height)
+	{
+		ft_texture_color(text, step.x * text->width, i * step.y, &rgba);
+		rgba = apply_fog(rgba, hit.dist, 9 * SCALE);
+		ft_texture(game->game_t, start.x, start.y + i, rgba);
+		i++;
+	}
+}
+
 void	fill_line_wall(float x, float s_y, float e_y, t_dist hit)
 {
-	t_game	*game;
-	size_t	rgba;
-	int		i;
-	int		k;
-	static int		j = 0;
-	float	scale;
-	t_vec2	gap;
-
-
-	i = 0;
-	game = get_game();
-	gap = get_gap(game, hit.hit);
-	scale = (float)SCALE / game->text.e_txt->width;
-	// j = (game->text.e_txt->width / scale) * gap.x;
-	k = 0;
-	if (j > (int)game->text.e_txt->width)
-		j = 0;
-	while (s_y + i < e_y)
-	{
-		ft_texture_color(game->text.e_txt, k, j, &rgba);
-		ft_texture(game->game_t, x, s_y + i, rgba);
-		if (k > (int)game->text.e_txt->height)
-			k = 0;
-		i++;
-		k++;
-	}
-	j++;
-	(void)gap;
-	(void)scale;
+	// pnf("->>%d", hit.side);
+	// hit.side = set_side_wall(hit);
+	fill_texture_wall(get_game(), (t_vec2){x, s_y}, e_y - s_y, hit);
+	// t_game	*game;
+	// size_t	rgba;
+	// int		i;
+	// int		k;
+	// int		j;
+	// float	scale;
+	// t_vec2	gap;
+	// float	height;
+	// float	rat;
+	//
+	// i = 0;
+	// height = e_y - s_y;
+	// game = get_game();
+	// gap = get_gap(game, hit.hit);
+	// // j = (game->text.e_txt->width / scale) * gap.x;
+	// k = 0;
+	// rat = gap.x / SCALE;
+	// // if (j > (int)game->text.e_txt->width)
+	// // 	j = 0;
+	// j = gap.x * 20;
+	// (void)height;
+	// scale = game->text.e_txt->height / (e_y - s_y);
+	// // printf("%f\n", gap.x);
+	// (void)j;
+	// if (rat == 0)
+	// 	rat = 0.1;
+	// while (s_y + i < e_y)
+	// {
+	// 	ft_texture_color(game->text.e_txt, rat * game->text.e_txt->width, i * scale, &rgba);
+	// 	ft_texture(game->game_t, x, s_y + i, rgba);
+	// 	// if (k > (int)game->text.e_txt->height)
+	// 	// 	k = 0;
+	// 	i++;
+	// 	k++;
+	// 	(void)k;
+	// }
+	// (void)gap;
+	// (void)scale;
 }
 
 void	set_wall(t_game *game, t_player player, float ray_angle)
 {
 	t_dist		hit;
-	float		dist;
 	float		height;
 	float		start;
 	float		stop;
 	float		x;
 
 	hit = find_hit(player.dir_x + ray_angle, player.x, player.y);
-	dist = distance(player.x, player.y, hit.hit, ray_angle);
-	if (dist < 2)
-		dist = 2;
+	hit.dist = distance(player.x, player.y, hit.hit, ray_angle);
+	if (hit.dist < 2)
+		hit.dist = 2;
 	hit.side = set_side_wall(hit);
-	height = (40 / dist) * (WIDTH / 3.7f);
+	height = (40 / hit.dist) * (WIDTH / 3.7f);
 	start = ((HEIGHT - height) / 2);
-	stop = height + start + (player.z * 30 / dist) + player.dir_y;
-	start += (player.z * 30 / dist) + player.dir_y; 
+	stop = height + start + (player.z * 30 / hit.dist) + player.dir_y;
+	start += (player.z * 30 / hit.dist) + player.dir_y; 
 	x = ((float)WIDTH / 2) + ray_angle * (WIDTH / game->fov);
 	fill_line_wall(x, start, stop, hit);
 	
