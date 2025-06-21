@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:01 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/17 21:14:54 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/20 16:23:24 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	intit(void)
 
 	g = get_game();
 	g->first_render = true;
-	g->player_speed = 0.4;
+	g->player_speed = 0.35;
 	g->player_size = SCALE / 2;
 	g->move_cam_speed = 1;
 	g->minimap.x = 0;

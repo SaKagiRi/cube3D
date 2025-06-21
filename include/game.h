@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:26:31 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/19 03:12:53 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/22 03:39:44 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@
 # define PI 3.14159
 
 # ifndef WIDTH
-#  define WIDTH 1280
+#  define WIDTH 1500
 # endif
 
 # ifndef HEIGHT
-#  define HEIGHT 720
+#  define HEIGHT 900
 # endif
 
 # ifndef MINI_WIDTH

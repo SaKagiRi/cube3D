@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 00:51:38 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/17 22:30:11 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/21 05:17:09 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,46 +180,50 @@ void	ray_player(t_game *game)
 	}
 }
 
+int		find_quatile(float	dir)
+{
+	if (dir > 0 && dir <= 90)
+		return (1);
+	else if (dir > 90 && dir <= 180)
+		return (2);
+	else if (dir > 180 && dir <= 270)
+		return (3);
+	else if (dir > 270 && dir <= 360)
+		return (4);
+	return (-1);
+}
+
 void	get_fist_sqare(t_game *game, t_vec2 gap, t_player player)
 {
-	float	xi;
-	float	dx;
-	float	yi;
-	float	dy;
-	float	c1;
-	float	c2;
-	float	rad;
+	// drawline(game->game_t, (t_point){0xFF0000FF, player.x, player.y, 0}, (t_point){0xFF0000FF, player.x - gap.x, player.y, 0});
+	// drawline(game->game_t, (t_point){0xFF0000FF, player.x, player.y, 0}, (t_point){0xFF0000FF, player.x + (SCALE - gap.x), player.y, 0});
+	// drawline(game->game_t, (t_point){0xFF0000FF, player.x, player.y, 0}, (t_point){0xFF0000FF, player.x, player.y - gap.y, 0});
+	// drawline(game->game_t, (t_point){0xFF0000FF, player.x, player.y, 0}, (t_point){0xFF0000FF, player.x, player.y + (SCALE - gap.y), 0});
 
-	xi = 0;
-	c2 = 0;
-	c1 = 0;
-	rad = -(player.dir_x - 90) * PI / 180;
-	xi = (SCALE - gap.y) * sin(rad);
-	c1 = c1 / cos(rad);
-	yi = (SCALE - gap.x) * cos(rad);
-	c2 = c2 / sin(rad);
-	// xi = (SCALE - gap.y) / tan(rad);
-	dx = SCALE * sin(rad);
-	// yi = (SCALE - gap.x) * tan(rad);
-	dy  = SCALE * cos(rad);
-	drawline(game->game_t, (t_point){0xFF000000, player.x, player.y, 0},\
- (t_point){0xFF000000, player.x + xi + dx, player.y + yi + dy, 0});
-	printf("xi:%f, yi:%f\n", xi, yi);
-	(void)xi;
-	(void)yi;
-	(void)game;
-	(void)dx;
-	(void)dy;
+	// float	rad = player.dir_x * PI / 180;
+	float	xi = (SCALE - gap.y) / (tan(player.dir_x) * SCALE);
+	float	yi = (gap.x) * tan(player.dir_x) * SCALE;
+	printf("%f\n", xi);
+	// printf("%f\n", yi);
+	drawline(game->game_t, (t_point){0xFFFFFFFF, player.x, player.y, 0}, (t_point){0xFFFFFFFF, player.x + xi, player.y + yi, 0});
+	// drawline(game->game_t, (t_point){0xFFFFFFFF, player.x, player.y, 0}, (t_point){0xFFFFFFFF, player.x, player.y + yi, 0});
 }
 
 void	dda(t_game *game)
 {
-	// t_vec2	gap;
+	t_vec2	gap;
 
 	dda_map(game);
-	// gap = get_gap(game, game->player);
+	gap = get_gap(game, (t_vec2){game->player.x, game->player.y});
+	// gap.x = -gap.x;
+	// gap.y = -gap.y;
 	// printf("gap: x:%f, y:%f\n", gap.x, gap.y);
-	// get_fist_sqare(game, gap, game->player);
+	// game->player.dir_x = 0;
+	// while (game->player.dir_x < 360)
+	// {
+		get_fist_sqare(game, gap, game->player);
+	// 	game->player.dir_x += 1;
+	// }
 	// put_dda(game, game->player, gap);
 	// ray_player(game);
 }
