@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 01:23:44 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/22 03:36:22 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/22 19:56:45 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,7 +180,7 @@ void	fill_texture_wall(t_game *game, t_vec2 start, float height, t_dist hit)
 	mlx_texture_t	*text;
 	int				i;
 	size_t			rgba;
-	
+
 	gap = get_gap(game, hit.hit);
 	step.x = gap.y / SCALE;
 	if (hit.side == NORTH || hit.side == SOUTH)
@@ -195,7 +195,8 @@ void	fill_texture_wall(t_game *game, t_vec2 start, float height, t_dist hit)
 	while (i < height)
 	{
 		ft_texture_color(text, step.x * text->width, i * step.y, &rgba);
-		rgba = apply_fog(rgba, hit.dist, 9 * SCALE);
+		if (game->fog)
+			rgba = apply_fog(rgba, hit.dist, 9 * SCALE);
 		if (start.y + i > 0 && start.y + i < HEIGHT)
 			ft_texture(game->game_t, start.x, start.y + i, rgba);
 		i++;
@@ -229,13 +230,17 @@ void	put_game(t_game *game)
 	float		ray_angle;
 	t_player	player;
 	float		step;
+	int			i;
 
 	ray_angle = -(game->fov / 2);
 	player = game->player;
 	step = game->fov / WIDTH;
+	i = 0;
 	while (ray_angle < game->fov / 2)
 	{	
-		set_wall(game, player, ray_angle);
+		if (i % 1 == 0)
+			set_wall(game, player, ray_angle);
+		i++;
 		ray_angle += step;
 	}
 }

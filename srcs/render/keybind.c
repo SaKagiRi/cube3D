@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 02:07:49 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/14 16:18:02 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/22 20:17:22 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void	key_hook(mlx_key_data_t data, void	*in)
 		game->player.dir_x -= 180;
 		allow_dir(game);
 	}
+	else if (data.key == MLX_KEY_F && data.action == 1)
+		game->fog = !game->fog;
 	else
 		return ;
 	game->on_change = false;

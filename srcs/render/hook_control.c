@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 02:04:18 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/22 03:20:44 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/22 17:55:10 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	hook(void *data)
 	if (check_render(game))
 		return ;
 	set_background(game);
-	put_map(game);
 	put_game(game);
+	put_map(game);
 	put_player(game->game_t, game->player, 0x000000FF);
 	put_cursor(game);
 	render(game);
