@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 02:02:17 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/23 03:11:51 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/25 23:45:49 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,6 @@ void	mlx(void)
 	mlx_loop_hook(game->mlx, hook, game);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);
+	mlx_delete_image(game->mlx, game->game_i);
+	mlx_delete_texture(game->game_t);
 }
