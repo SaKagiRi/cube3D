@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 02:04:18 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/22 17:55:10 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/23 22:51:23 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,12 @@ void	put_cursor(t_game *game)
 
 	i = 0;
 	while (i <= 10)
-		ft_texture(game->game_t, WIDTH / 2.0f - 5 + i++, HEIGHT / 2.0f, 0xFFFFFF);
+		ft_texture(game->game_t, WIDTH / 2.0f - 5 + i++,
+			HEIGHT / 2.0f, 0xFFFFFF);
 	i = 0;
 	while (i <= 10)
-		ft_texture(game->game_t, WIDTH / 2.0f, HEIGHT / 2.0f - 5 + i++, 0xFFFFFF);
+		ft_texture(game->game_t, WIDTH / 2.0f,
+			HEIGHT / 2.0f - 5 + i++, 0xFFFFFF);
 }
 
 void	hook(void *data)

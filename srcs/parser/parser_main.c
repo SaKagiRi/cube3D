@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:18:16 by kawaii            #+#    #+#             */
-/*   Updated: 2025/06/15 05:48:31 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/06/25 23:41:26 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	init_file(int argc, char **argv, t_game *game)
 		ft_exit(1);
 	}
 	if (ft_strlen(ft_strrchr(argv[1], '.')) != 4 \
-		|| ft_strncmp(ft_strrchr(argv[1], '.'), ".cub", 4))
+|| ft_strncmp(ft_strrchr(argv[1], '.'), ".cub", 4))
 	{
 		game->err = FILE_ERR;
 		ft_exit(1);
@@ -92,8 +92,8 @@ void	parser(int argc, char **argv)
 		clear_tile(game->map.map, game->map.row);
 		ft_exit(1);
 	}
-	flood_fill(game->map.map, game, (int)(game->player.y / SCALE), \
-			(int)(game->player.x / SCALE));
+	flood_fill(game->map.map, game, (int)(game->player.y / SCALE),
+		(int)(game->player.x / SCALE));
 	if (game->err != OK)
 	{
 		clear_texture(&game->text);

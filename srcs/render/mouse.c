@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 21:04:49 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/17 21:20:54 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/23 23:01:23 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	mouse(t_game *game)
 		game->player.dir_x += dx / (110 - (game->mouse_sen * 100));
 	if (y != HEIGHT / 2)
 	{
-			game->player.dir_y -= dy / 2;
+		game->player.dir_y -= dy / 2;
 		if (!(game->player.dir_y < 600 && game->player.dir_y > -600))
 			game->player.dir_y += dy / 2;
 	}

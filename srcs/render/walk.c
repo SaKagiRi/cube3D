@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 06:00:11 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/22 03:19:57 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/23 22:50:12 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ t_vec2	wallcheck(float x, float y, float dir, float speed)
 		x += sin(rad) * i;
 		y -= cos(rad) * i;
 		if (map[(int)(y / scale)][(int)(x / scale)].type == WALL \
-		|| (map[(int)(next.y / scale)][(int)(x / scale)].type == WALL \
-		&& map[(int)(y / scale)][(int)(next.x / scale)].type == WALL))
+|| (map[(int)(next.y / scale)][(int)(x / scale)].type == WALL \
+&& map[(int)(y / scale)][(int)(next.x / scale)].type == WALL))
 			return (next);
 		i += 0.1;
 	}
@@ -60,6 +60,7 @@ static void	walk(t_game *game, float dir)
 	}
 	game->player.x = next.x;
 	game->player.y = next.y;
+	teleport(game);
 }
 
 bool	key(int key)

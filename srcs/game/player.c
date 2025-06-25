@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 04:36:29 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/14 02:24:33 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/23 23:04:44 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ void	put_body(mlx_texture_t *text, t_player player, float rad, size_t color)
 void	put_player(mlx_texture_t *text, t_player player, size_t color)
 {
 	float		rad;
+
 	rad = player.dir_x * PI / 180;
 	put_body(text, player, rad, color);
-	ft_texture(text, player.x + get_game()->minimap.x, player.y + get_game()->minimap.y, color);
+	ft_texture(text, player.x + get_game()->minimap.x,
+		player.y + get_game()->minimap.y, color);
 }

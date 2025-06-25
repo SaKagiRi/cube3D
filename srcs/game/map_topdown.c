@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 02:21:19 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/17 20:32:47 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/23 23:05:13 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,11 @@ void	put_map(t_game *game)
 		while (map[i][j].type != END)
 		{
 			if (map[i][j].type == WALL)
-				put_box(game->game_t, map[i][j].x + x, map[i][j].y + y, 0xAAAAAAFF);
+				put_box(game->game_t, map[i][j].x + x,
+					map[i][j].y + y, 0xAAAAAAFF);
 			else if (map[i][j].type == PATH)
-				put_box(game->game_t, map[i][j].x + x, map[i][j].y + y, 0xFFFFFFFF);
+				put_box(game->game_t, map[i][j].x + x,
+					map[i][j].y + y, 0xFFFFFFFF);
 			j++;
 		}
 		i++;

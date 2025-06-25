@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 06:09:36 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/15 03:19:55 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/23 22:50:26 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ bool	bindswing(t_game *game)
 	else if (key(MLX_KEY_UP))
 	{
 		if (game->player.dir_y < 300)
-		game->player.dir_y += 20;
+			game->player.dir_y += 20;
 	}
 	else if (key(MLX_KEY_DOWN))
 	{

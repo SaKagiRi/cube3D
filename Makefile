@@ -41,11 +41,11 @@ RENDER_FILE		= mlx keybind hook_control walk swing mouse jump
 #------------[GAME]
 GAME				= $(addprefix $(GAME_PATH)/, $(addsuffix .c, $(GAME_FILE)))
 GAME_PATH		= game
-GAME_FILE		= map_topdown player game
+GAME_FILE		= map_topdown player game teleport background teleport_check side_wall
 #------------[RAY]
 RAY				= $(addprefix $(RAY_PATH)/, $(addsuffix .c, $(RAY_FILE)))
 RAY_PATH		= ray
-RAY_FILE		= ray
+RAY_FILE		= ray distance
 #------------[PROCESS]
 all: lib $(NAME)
 $(NAME): $(OBJ) | $(BUILD_DIR)

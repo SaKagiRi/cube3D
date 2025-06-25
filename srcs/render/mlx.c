@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 02:02:17 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/22 20:17:14 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/23 03:11:51 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ static void	inti(t_game *game)
 	game->mlx = mlx_init(WIDTH, HEIGHT, "game", true);
 	game->game_t = new_texture(WIDTH, HEIGHT, 0x000000);
 	game->on_change = false;
+	game->teleport.tp_left.x = -1;
+	game->teleport.tp_left.y = -1;
+	game->teleport.tp_right.x = -1;
+	game->teleport.tp_right.y = -1;
+	game->teleport.side_left = -1;
+	game->teleport.side_right = -1;
 }
 
 void	mlx(void)

@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 21:07:11 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/17 21:10:56 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/25 23:38:59 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,21 @@ static void	on_jump(t_game *game, int *jump, bool *on_down)
 	jump_height = 60;
 	if (*jump < jump_height && !*on_down)
 	{
-		*jump += 6;
+		*jump += 8;
 		game->player.z += (jump_height - *jump) / 1.5;
 	}
 	else if (*jump > -10)
 	{
 		game->player.z -= (jump_height - *jump) / 1.5;
 		*on_down = true;
-		*jump -= 6;
+		*jump -= 8;
 	}
 }
 
 void	jump(t_game *game)
 {
-	static int jump = -1;
-	static bool on_down = false;
+	static int	jump = -1;
+	static bool	on_down = false;
 
 	if (!game->on_jump && jump == -1)
 		return ;

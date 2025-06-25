@@ -6,7 +6,7 @@
 /*   By: knakto <knakto@student.42bangkok.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 01:58:12 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/10 01:36:11 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/23 23:04:02 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,4 +111,3 @@ void	drawline(mlx_texture_t *text, t_point start, t_point stop)
 			y_line(text, &start, &stop);
 	}
 }
-

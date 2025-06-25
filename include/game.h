@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:26:31 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/22 20:17:28 by knakto           ###   ########.fr       */
+/*   Updated: 2025/06/23 01:56:35 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,11 +199,20 @@ typedef struct s_vec2
 	double	y;
 }	t_vec2;
 
+typedef struct s_tp
+{
+	t_vec2		tp_left;
+	t_vec2		tp_right;
+	int			side_left;
+	int			side_right;
+}	t_tp;
+
 typedef struct s_game
 {
 	mlx_t			*mlx;
 	mlx_image_t		*game_i;
 	mlx_texture_t	*game_t;
+	t_tp		teleport;
 	t_player	player;
 	t_player	minimap;
 	t_map		map;
