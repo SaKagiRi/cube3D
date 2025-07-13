@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:31:29 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/15 04:46:20 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/07/13 16:58:57 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # ifndef LIMIT_MAP_SIZE
 #  define LIMIT_MAP_SIZE 100
 # endif
-
 
 int		in(char c, char	*set);
 int		all_in(char *str, char *set);
@@ -48,7 +47,6 @@ void	flood_fill(t_tile **tile, t_game *game, int y, int x);
 
 void	mlx(void);
 void	init_player(char type, int x, int y);
-
 
 t_game	*get_game(void);
 

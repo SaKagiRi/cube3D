@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 16:20:23 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/25 23:37:40 by knakto           ###   ########.fr       */
+/*   Updated: 2025/07/13 16:50:27 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static bool	wall_check(t_vec2 cur, t_vec2 temp, int mode)
 static void	init_ray(double *r, double *s, int *c)
 {
 	*r = 0;
-	*s = 1;
+	*s = 0.1;
 	*c = 0;
 }
 

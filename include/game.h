@@ -6,11 +6,11 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:26:31 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/23 01:56:35 by knakto           ###   ########.fr       */
+/*   Updated: 2025/07/13 16:58:38 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	GAME_H
+#ifndef GAME_H
 # define GAME_H
 
 # include "kml.h"
@@ -172,9 +172,10 @@ typedef struct s_map
 
 mlx_texture_t	*new_texture(size_t w, size_t h, size_t bg_color);
 void			fill_background(mlx_texture_t *texture, size_t bg_color);
-int				ft_texture(mlx_texture_t *texture, float x, float y, size_t rgb);
-int	ft_texture_color(mlx_texture_t *texture, \
-size_t x, size_t y, size_t *color);
+int				ft_texture(mlx_texture_t *texture, float x,
+					float y, size_t rgb);
+int				ft_texture_color(mlx_texture_t *texture,
+					size_t x, size_t y, size_t *color);
 
 typedef struct s_mlx
 {
@@ -212,25 +213,25 @@ typedef struct s_game
 	mlx_t			*mlx;
 	mlx_image_t		*game_i;
 	mlx_texture_t	*game_t;
-	t_tp		teleport;
-	t_player	player;
-	t_player	minimap;
-	t_map		map;
-	t_text		text;
-	t_err		err;
-	bool		on_change;
-	bool		first_render;
-	bool		on_jump;
-	bool		fog;
-	int			mouse;
-	float		fov;
-	float		mouse_sen;
-	float		player_speed;
-	int			player_size;
-	int			move_cam_speed;
-	int			scale;
+	t_tp			teleport;
+	t_player		player;
+	t_player		minimap;
+	t_map			map;
+	t_text			text;
+	t_err			err;
+	bool			on_change;
+	bool			first_render;
+	bool			on_jump;
+	bool			fog;
+	int				mouse;
+	float			fov;
+	float			mouse_sen;
+	float			player_speed;
+	int				player_size;
+	int				move_cam_speed;
+	int				scale;
 }	t_game;
 
-t_game	*get_game(void);
+t_game			*get_game(void);
 
 #endif

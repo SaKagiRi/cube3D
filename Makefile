@@ -57,9 +57,11 @@ $(NAME): $(OBJ) | $(BUILD_DIR)
 	@printf "\033[1A\033[2K"
 lib:
 	@make -C $(LIBFT_DIR)
+	@cmake $(MLX_DIR) -B $(MLX_DIR)/build && make -C $(MLX_DIR)/build -j4
 clean:
 	@rm -rf $(OBJ)
 	@make clean -C $(LIBFT_DIR)
+	@rm -rf $(MLX_DIR)/build
 fclean: clean
 	@rm -rf $(NAME)
 	@make fclean -C $(LIBFT_DIR)

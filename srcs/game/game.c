@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 01:23:44 by knakto            #+#    #+#             */
-/*   Updated: 2025/06/23 23:39:19 by knakto           ###   ########.fr       */
+/*   Updated: 2025/07/13 16:54:42 by knakto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ size_t	sub_fnc_texture_wall(size_t rgba, t_vec2 gap, t_dist hit, t_game *game)
 && game->teleport.tp_right.y == hit.block.y \
 && game->teleport.side_right == hit.side)
 		rgba = 0xFF0000FF;
-	if (game->fog && hit.dist > 10)
+	if (game->fog && hit.dist > 4)
 		rgba = apply_fog(rgba, hit.dist, 9 * SCALE);
 	return (rgba);
 }
@@ -74,7 +74,7 @@ void	fill_texture_wall(t_game *game, t_vec2 start, float height, t_dist hit)
 		return ;
 	if (step.x == 0)
 		step.x = 0.1;
-	step.y = (int)text->height / height;
+	step.y = text->height / height;
 	i = 0;
 	while (i < height)
 	{
@@ -112,17 +112,13 @@ void	put_game(t_game *game)
 	float		ray_angle;
 	t_player	player;
 	float		step;
-	int			i;
 
 	ray_angle = -(game->fov / 2);
 	player = game->player;
 	step = game->fov / WIDTH;
-	i = 0;
 	while (ray_angle < game->fov / 2)
 	{
-		if (i % 1 == 0)
-			set_wall(game, player, ray_angle);
-		i++;
+		set_wall(game, player, ray_angle);
 		ray_angle += step;
 	}
 }
