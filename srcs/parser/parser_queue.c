@@ -84,13 +84,18 @@ void	get_queue(t_map *map, int fd)
 	while (map->buf != NULL)
 	{
 		tmp = map->buf;
-		map->buf = ft_strtrim(map->buf, "\n");
-		free(tmp);
-		if (!valid_str(map->buf, &map->col))
-			game->err = MAP_ERR;
-		add_to_queue(map->buf, &map->vecmap);
-		if (game->err == MEM_ERR)
-			return ;
+		if (all_in(tmp, " \0") || all_in(tmp, " \n"))
+			free (tmp);
+		else
+		{
+			map->buf = ft_strtrim(map->buf, "\n");
+			free(tmp);
+			if (!valid_str(map->buf, &map->col))
+				game->err = MAP_ERR;
+			add_to_queue(map->buf, &map->vecmap);
+			if (game->err == MEM_ERR)
+				return ;
+		}
 		map->buf = get_next_line(fd);
 		game->map.row++;
 	}

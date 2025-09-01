@@ -91,6 +91,11 @@ void	parse_tile(t_map *map)
 			new_tile(&map->map[i][j], con[j], j, i);
 			j++;
 		}
+		while (j < map->col)
+		{
+			new_tile(&map->map[i][j], ' ', j, i);
+			j++;
+		}
 		end_tile(&map->map[i][j]);
 		cur = cur->next;
 		i++;
