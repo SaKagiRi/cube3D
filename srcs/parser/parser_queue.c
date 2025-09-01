@@ -85,7 +85,11 @@ void	get_queue(t_map *map, int fd)
 	{
 		tmp = map->buf;
 		if (all_in(tmp, " \0") || all_in(tmp, " \n"))
+		{
 			free (tmp);
+			game->err = MAP_ERR;
+			return ;
+		}
 		else
 		{
 			map->buf = ft_strtrim(map->buf, "\n");
