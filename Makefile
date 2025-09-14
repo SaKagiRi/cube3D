@@ -1,5 +1,5 @@
 #------------[MANDATORY]
-NAME		= cube3D
+NAME		= cub3D
 CC			= cc
 #------------[FLAGS]
 CFLAGS		= $(DEBUG_FLAGS) $(W_FLAGS)
