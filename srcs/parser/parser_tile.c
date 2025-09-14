@@ -6,11 +6,12 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 03:29:11 by kawaii            #+#    #+#             */
-/*   Updated: 2025/06/15 05:33:08 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/09/14 19:59:37 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+#include "stdlib.h"
 
 void	clear_tile(t_tile **map, int row)
 {
@@ -76,7 +77,7 @@ void	parse_tile(t_map *map)
 	t_list		*cur;
 	char		*con;
 	int			i;
-	int			j;
+	size_t		j;
 
 	i = 0;
 	cur = map->vecmap.raw_map;
@@ -84,21 +85,17 @@ void	parse_tile(t_map *map)
 		return ;
 	while (cur)
 	{
-		j = 0;
+		j = -1;
 		con = cur->content;
-		while (con[j])
+		while (++j < (size_t)map->col)
 		{
-			new_tile(&map->map[i][j], con[j], j, i);
-			j++;
+			if (j < ft_strlen(con))
+				new_tile(&map->map[i][j], con[j], j, i);
+			else
+				new_tile(&map->map[i][j], ' ', j, i);
 		}
-		while (j < map->col)
-		{
-			new_tile(&map->map[i][j], ' ', j, i);
-			j++;
-		}
-		end_tile(&map->map[i][j]);
+		end_tile(&map->map[i++][j]);
 		cur = cur->next;
-		i++;
 	}
 	if (!map->p_init)
 		get_game()->err = CHARAC_ERR;

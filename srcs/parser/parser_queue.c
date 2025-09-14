@@ -6,7 +6,7 @@
 /*   By: kawaii <kawaii@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 01:25:07 by kawaii            #+#    #+#             */
-/*   Updated: 2025/06/15 05:08:40 by kawaii           ###   ########.fr       */
+/*   Updated: 2025/09/14 19:53:33 by kawaii           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,8 @@ void	get_queue(t_map *map, int fd)
 		tmp = map->buf;
 		if (all_in(tmp, " \0") || all_in(tmp, " \n"))
 		{
-			free (tmp);
 			game->err = MAP_ERR;
-			return ;
+			return (free (tmp));
 		}
 		else
 		{
